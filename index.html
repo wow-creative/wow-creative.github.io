@@ -1,142 +1,396 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
+<html lang="zh-TW">
+
 <head>
-<title>華躍創意行銷 WOW Creative Marketing</title>
-<meta charset="utf-8" />
-<meta name="description" content="WOW Creative Marketing 華躍創意行銷 官方網站" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- Twitter Card data -->
-<meta name="twitter:title" content="WOW Creative Marketing">
-<meta name="twitter:description" content="WOW Creative Marketing 華躍創意行銷 官方網站">
-<meta name="twitter:image:src" content="http://wow-creative.com.tw/img/logo_social.png">
-<!-- Open Graph data -->
-<meta property="og:title" content="WOW Creative Marketing" />
-<meta property="og:url" content="http://wow-creative.com.tw" />
-<meta property="og:image" content="http://wow-creative.com.tw/img/logo_social.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="360" />
-<meta property="og:image:height" content="360" />
-<meta property="og:description" content="WOW Creative Marketing 華躍創意行銷 官方網站" />
 
-<meta property="article:published_time" content="2015-11-19T11:20:00+08:00" />
-<meta property="article:modified_time" content="2017-08-15T011:45:00+08:00" />
+	<!--- basic page needs
+   ================================================== -->
+	<meta charset="utf-8">
+	<title>WOW 華躍創意行銷</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-<link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/font-awesome.min.css" />
-<link rel="stylesheet" href="css/animate.css" />
-<link rel="stylesheet" href="css/main.css" />
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500,700&display=swap&subset=chinese-traditional" rel="stylesheet">
-<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<!-- <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	<!-- mobile specific metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  ga('create', 'UA-54112573-1', 'auto');
-  ga('require', 'linkid', 'linkid.js');
-  ga('send', 'pageview');
+	<!-- CSS
+   ================================================== -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/vendor.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link
+		href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500,700,900|Roboto:400,400i,500,500i,700,700i,900,900i&display=swap&subset=chinese-traditional"
+		rel="stylesheet">
+	<link rel="stylesheet" href="css/wow.css">
 
-</script> -->
+	<!-- script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
+	<script src="js/pace.min.js"></script>
+
+	<!-- favicons
+	================================================== -->
+	<!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+	<!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<link rel="manifest" href="favicon/manifest.json">
+
 </head>
-<body>
-<div class="push-top"></div>
-<div id="main-wrapper">
-    <!--[if lt IE 7]><p class="chromeframe">很抱歉，本網站不法支援您使用的瀏覽器版本，請至 <a href="http://browsehappy.com/">前往升級</a>您的瀏覽器版本，已獲得最佳的使用體驗。</p><![endif]-->
-    <div id="preloader">
-        <div id="spinner_container"><img src="img/spinner.gif" alt="" /></div>
-    </div>
 
-    <!-- modal -->
-    <section id="modal">
-        <div class="bt-modal-close"><span></span></div>
+<body id="top">
+	<div class="body-bg body-bg-video">
+		<video autoplay loop id="video-background" muted plays-inline>
+			<source src="images/bg.mp4" type="video/mp4">
+		</video>
+	</div>
+	<div class="body-bg body-bg-mask"></div>
+	<div class="body-bg body-bg-dot"></div>
 
-        <article id="modal-contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2><i class="fa fa-dot-circle-o"></i> Contact</h2>
-                    </div>
-                    <div class="col-md-5">
-                        <h3 class="company-name">華躍創意行銷公司</h3>
-                        <address>
-                        	<ul class="fa-ul contact-info">
-                                <li><i class="fa-li fa fa-map-marker"></i>110 台北市信義區文昌街316號13樓之3</li>
-                                <li><i class="fa-li fa fa-phone"></i>+886-2-2964-5232</li>
-                                <!--<li><i class="fa-li fa fa-fax"></i>+886-2-2964-2728</li>-->
-                                <li><i class="fa-li fa fa-mobile fa-lg"></i>0933873638</li>
-                                <li><i class="fa-li fa fa-envelope-o"></i><a href="mailto:#">saintlee7@hotmail.com</a></li>
-                            </ul>
-                        </address>
-                    </div>
-                    <div class="col-md-7">
-                    	<figure class="gmap">
-                        	<div id="map-canvas"></div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </section>
-    <!--/ modal -->
 
-    <section id="head">
-        <div class="container">
-            <div class="row animated" data-animation-delay="200" data-animation="fadeIn">
-                <div class="col-md-12 text-center">
-                    <!--<h1>Under <br />Construction</h1>-->
+	<!-- header 
+   ================================================== -->
+	<header>
+		<div class="header-logo">
+			<a href="index.html">華躍創意行銷</a>
+		</div>
+		<a id="header-menu-trigger" href="#0">
+			<span class="header-menu-text">Menu</span>
+			<span class="header-menu-icon"></span>
+		</a>
+		<nav id="menu-nav-wrap">
+			<a href="#0" class="close-button" title="close"><span>Close</span></a>
+			<ul class="nav-list">
+				<li class="current"><a class="smoothscroll" href="#home" title="">首頁</a></li>
+				<li><a class="smoothscroll" href="#about" title="">關於我們</a></li>
+				<li><a class="smoothscroll" href="#services" title="">服務項目</a></li>
+				<li><a class="smoothscroll" href="#portfolio" title="">執行案例</a></li>
+				<li><a class="smoothscroll" href="#clients" title="">服務客戶群</a></li>
+				<li><a class="smoothscroll" href="#contact" title="">聯絡我們</a></li>
+			</ul>
+		</nav> <!-- end #menu-nav-wrap -->
+	</header> <!-- end header -->
 
-                    <div class="logo" title="華躍創意行銷公司 WOW Creative Marketing Co.,Ltd.">
-                    	 <img src="img/logo_wow.png" alt="" />
-                    </div>
-                	<p><a href="javascript:void(0)" class="show-modal btn btn-default" data-modal="contact">與我們聯絡</a></p>
-                </div>
-            </div>
-            <div class="row animated" data-animation-delay="350" data-animation="fadeIn">
-                <div class="divider">
-                	<strong class="soon-info">網站改版中</strong>
-                    <p class="soon-info-en">We are changing and we'll back soon!</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!--footer-->
-    <footer>
-        <div class="container">
-            <div class="row text-center animated" data-animation-delay="500" data-animation="fadeIn">
-            	<div class="col-md-12">
-                    <div class="social-icons">
-                        <a href="#" data-type="facebook" data-url="http://wow-creative.com.tw" data-title="WOW Creative Marketing" data-description="WOW Creative Marketing 華躍創意行銷 官方網站" data-media="http://wow-creative.com.tw/img/logo_social.png" class="prettySocial facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" data-type="googleplus" data-url="http://wow-creative.com.tw" data-title="WOW Creative Marketing" data-description="WOW Creative Marketing 華躍創意行銷 官方網站" data-media="http://wow-creative.com.tw/img/logo_social.png" class="prettySocial google-plus"><i class="fa fa-google-plus"></i> </a>
-                        <a href="#" data-type="twitter" data-url="http://wow-creative.com.tw" data-title="WOW Creative Marketing" data-description="WOW Creative Marketing 華躍創意行銷 官方網站" data-media="http://wow-creative.com.tw/img/logo_social.png" class="prettySocial twitter"><i class="fa fa-twitter"></i> </a>
-                        <a href="#" data-type="linkedin" data-url="http://wow-creative.com.tw" data-title="WOW Creative Marketing" data-description="WOW Creative Marketing 華躍創意行銷 官方網站" data-media="http://wow-creative.com.tw/img/logo_social.png" class="prettySocial linkedin"><i class="fa fa-linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="copy">&copy; <span id="this-year"></span> 華躍創意行銷 版權所有。</div>
-            </div>
-        </div>
-    </footer>
-    <!--/footer-->
-    <!--background-->
-    <div id="slides">
-        <div class="slides-container"><img src="img/wallp.jpg" alt="" /></div>
-    </div>
-    <!--/background-->
+	<!-- home
+   ================================================== -->
+	<section id="home">
 
-</div>
-<!--video-wrapper-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-<script src="js/main.js"></script>
+		<div class="overlay"></div>
+		<div class="home-content-table">
+			<div class="home-content-tablecell">
+				<div class="row">
+					<div class="col-twelve">
+						<h3 class="animate-intro">Make you go</h3>
+						<h1 class="animate-intro">WOW</h1>
+						<div class="more animate-intro">
+							<a class="smoothscroll button stroke" href="#about">華躍創意行銷</a>
+						</div>
+					</div> <!-- end col-twelve -->
+				</div> <!-- end row -->
+			</div> <!-- end home-content-tablecell -->
+		</div> <!-- end home-content-table -->
+	</section> <!-- end home -->
+
+
+	<!-- about
+   ================================================== -->
+	<section id="about">
+		<div class="row about-wrap">
+			<div class="col-full">
+				<div class="about-profile-bg"></div>
+				<div class="intro">
+					<h3 class="heading animate-this">
+						<span class="heading-zh">關於我們</span>
+						<span class="heading-en">Who We Are</span>
+					</h3>
+					<p class="lead animate-this">華躍創意創立於2009年，團隊擁有活動企劃、專案執行及整合統籌豐富經驗。並以創意精準、執行準確，服務到位的活動目標為客戶用心規劃每場活動。</p>
+				</div>
+			</div> <!-- end col-full  -->
+		</div> <!-- end about-wrap  -->
+	</section> <!-- end about -->
+
+
+	<!-- services
+   ================================================== -->
+	<section id="services">
+
+		<div class="overlay"></div>
+		<div class="gradient-overlay"></div>
+
+		<div class="row narrow section-intro animate-this">
+			<div class="col-full">
+				<h3 class="heading animate-this">
+					<span class="heading-zh">服務項目</span>
+					<span class="heading-en">What We Do</span>
+				</h3>
+			</div> <!-- end col-full -->
+		</div> <!-- end row -->
+
+		<div class="row services-content">
+			<div class="services-list">
+
+				<div class="bgrid service-item animate-this">
+					<span class="icon"><i class="icon-earth"></i></span>
+					<div class="service-content">
+						<h3 class="h05">活動行銷</h3>
+						<p><span class="d-inlineblock">企業會議</span>/<span class="d-inlineblock">員工大會</span>/<span class="d-inlineblock">家庭日</span>/<span class="d-inlineblock">尾牙</span>/<span class="d-inlineblock">春酒</span></p>
+					</div>
+				</div> <!-- end bgrid -->
+
+				<div class="bgrid service-item animate-this">
+					<span class="icon"><i class="icon-lego-block"></i></span>
+					<div class="service-content">
+						<h3 class="h05">媒體行銷</h3>
+						<p><span class="d-inlineblock">記者會</span>/<span class="d-inlineblock">議題規劃</span>/<span class="d-inlineblock">媒體關係</span>/<span class="d-inlineblock">媒體發稿</span></p>
+					</div>
+				</div> <!-- end bgrid -->
+
+				<div class="bgrid service-item animate-this">
+					<span class="icon"><i class="icon-megaphone"></i></span>
+					<div class="service-content">
+						<h3 class="h05">產品行銷</h3>
+						<p><span class="d-inlineblock">產品發表會</span>/<span class="d-inlineblock">消費者活動</span>/<span class="d-inlineblock">通路宣傳</span></p>
+					</div>
+				</div> <!-- end bgrid -->
+
+				<div class="bgrid service-item animate-this">
+					<span class="icon"><i class="icon-paint-brush"></i></span>
+					<div class="service-content">
+						<h3 class="h05">媒體設計</h3>
+						<p><span class="d-inlineblock">3D展場設計</span>/<span class="d-inlineblock">平面視覺設計</span>/<span class="d-inlineblock">企業影片拍攝</span></p>
+					</div>
+				</div> <!-- end bgrid -->
+
+				<div class="bgrid service-item animate-this">
+					<span class="icon"><i class="icon-video"></i></span>
+					<div class="service-content">
+						<h3 class="h05">數位行銷</h3>
+						<p><span class="d-inlineblock">社群媒體行銷</span>/<span class="d-inlineblock">網紅行銷</span></p>
+					</div>
+				</div> <!-- end bgrid -->
+
+			</div> <!-- end services-list -->
+		</div> <!-- end services-content -->
+	</section> <!-- end services -->
+
+
+	<!-- portfolio
+   ================================================== -->
+	<section id="portfolio">
+
+		<div class="intro-wrap">
+
+			<div class="row narrow section-intro with-bottom-sep animate-this">
+				<div class="col-twelve">
+					<h3 class="heading">
+						<span class="heading-zh">執行案例</span>
+						<span class="heading-en">SHOWCASE</span>
+					</h3>
+				</div>
+			</div> <!-- end row section-intro -->
+
+		</div> <!-- end intro-wrap -->
+
+		<div class="row portfolio-content">
+			<div class="col-twelve">
+				<div id="folio-wrap" class="bricks-wrapper">
+
+					<div class="brick folio-item">
+						<div class="item-wrap animate-this" data-src="images/portfolio/gallery/g-shutterbug.jpg"
+							data-sub-html="#01">
+							<a href="#" class="overlay">
+								<img src="images/portfolio/shutterbug.jpg" alt="Skaterboy">
+								<div class="item-text">
+									<span class="folio-types">活動類</span>
+								</div>
+							</a>
+						</div> <!-- end item-wrap -->
+					</div> <!-- end folio-item -->
+
+					<div class="brick folio-item">
+						<div class="item-wrap animate-this" data-src="images/portfolio/gallery/g-yellowwall.jpg"
+							data-sub-html="#02">
+							<a href="#" class="overlay">
+								<img src="images/portfolio/yellowwall.jpg" alt="Shutterbug">
+								<div class="item-text">
+									<span class="folio-types">活動類</span>
+								</div>
+							</a>
+						</div> <!-- end item-wrap -->
+					</div> <!-- end folio-item -->
+
+					<div class="brick folio-item">
+						<div class="item-wrap animate-this" data-src="images/portfolio/gallery/g-architecture.jpg"
+							data-sub-html="#03">
+							<a href="#" class="overlay">
+								<img src="images/portfolio/architecture.jpg" alt="Explore">
+								<div class="item-text">
+									<span class="folio-types">媒體類</span>
+								</div>
+							</a>
+						</div> <!-- end item-wrap -->
+					</div> <!-- end folio-item -->
+
+					<div class="brick folio-item">
+						<div class="item-wrap animate-this" data-src="images/portfolio/gallery/g-minimalismo.jpg"
+							data-sub-html="#04">
+							<a href="#" class="overlay">
+								<img src="images/portfolio/minimalismo.jpg" alt="Minimalismo">
+								<div class="item-text">
+									<span class="folio-types">活動類</span>
+								</div>
+							</a>
+						</div> <!-- end item-wrap -->
+					</div> <!-- end folio-item -->
+
+					<div class="brick folio-item">
+						<div class="item-wrap animate-this" data-src="images/portfolio/gallery/g-skaterboy.jpg"
+							data-sub-html="#05">
+							<a href="#" class="overlay">
+								<img src="images/portfolio/skaterboy.jpg" alt="Bicycle">
+								<div class="item-text">
+									<span class="folio-types">活動類</span>
+								</div>
+							</a>
+						</div> <!-- end item-wrap -->
+					</div> <!-- end folio-item -->
+
+					<div class="brick folio-item">
+						<div class="item-wrap animate-this" data-src="images/portfolio/gallery/g-salad.jpg"
+							data-sub-html="#06">
+							<a href="#" class="overlay">
+								<img src="images/portfolio/salad.jpg" alt="Salad">
+								<div class="item-text">
+									<span class="folio-types">活動類</span>
+								</div>
+							</a>
+						</div> <!-- end item-wrap -->
+					</div> <!-- end folio-item -->
+
+				</div> <!-- end folio-wrap -->
+			</div> <!-- end twelve -->
+		</div> <!-- end portfolio-content -->
+
+	</section> <!-- end portfolio -->
+
+
+	<!-- clients
+   ================================================== -->
+	<section id="clients">
+		<div class="row narrow section-intro animate-this">
+			<div class="col-full">
+				<h3 class="heading animate-this">
+					<span class="heading-zh">服務客戶群</span>
+					<span class="heading-en">Clients</span>
+				</h3>
+			</div> <!-- end col-full -->
+		</div> <!-- end row -->
+		<div class="row animate-this">
+			<div class="col-twelve">
+
+				<div class="client-lists owl-carousel">
+					<div><img src="images/clients/bayer.svg" alt=""></div>
+					<div><img src="images/clients/dior.svg" alt=""></div>
+					<div><img src="images/clients/familymart.svg" alt=""></div>
+					<div><img src="images/clients/irdeto.png" alt=""></div>
+					<div><img src="images/clients/lg.svg" alt=""></div>
+					<div><img src="images/clients/mazda.svg" alt=""></div>
+					<div><img src="images/clients/microsoft.svg" alt=""></div>
+					<div><img src="images/clients/medtronic.svg" alt=""></div>
+					<div><img src="images/clients/samsung.svg" alt=""></div>
+					<div><img src="images/clients/sandisk.svg" alt=""></div>
+					<div><img src="images/clients/siemens.svg" alt=""></div>
+					<div><img src="images/clients/vitalon.jpg" alt=""></div>
+				</div>
+
+			</div> <!-- end col-twelve -->
+		</div> <!-- end row -->
+
+	</section> <!-- end clients -->
+
+
+	<!-- contact
+   ================================================== -->
+	<section id="contact">
+
+		<div class="overlay"></div>
+
+		<div class="row narrow section-intro animate-this">
+			<div class="col-twelve">
+				<h3 class="heading">
+					<span class="heading-zh">聯絡我們</span>
+					<span class="heading-en">Contact Us</span>
+				</h3>
+			</div>
+		</div> <!-- end section-intro -->
+
+
+		<div class="row contact-content" >
+
+			<div class="tab-full contact-info end animate-this">
+
+				<h5>華躍創意行銷</h5>
+				<div class="cinfo">
+					<div class="ico-circle"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+					<p>110 台北市信義區文昌街316號13樓之3</p>
+				</div> <!-- end cinfo -->
+				<div class="cinfo">
+					<div class="ico-circle"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+					<p><a href="mailto:saintlee7@hotmail.com">saintlee7@hotmail.com</a></p>
+				</div> <!-- end cinfo -->
+				<div class="cinfo">
+					<div class="ico-circle"><i class="fa fa-phone" aria-hidden="true"></i></div>
+					<p>02-2964-5232 #10</p>
+				</div>
+
+			</div> <!-- end cinfo -->
+
+		</div> <!-- end row contact-content -->
+
+	</section> <!-- end contact -->
+
+
+	<!-- footer
+   ================================================== -->
+	<footer>
+		<div class="footer-bottom">
+			<div class="row">
+				<div class="col-twelve">
+					<div class="copyright">
+						<span>© <span id="this-year"></span> WOW 華躍創意行銷 版權所有</span>
+					</div>
+				</div>
+			</div>
+		</div> <!-- end footer-bottom -->
+		<div id="go-top">
+			<a class="smoothscroll" title="Back to Top" href="#top">
+				<i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+			</a>
+		</div>
+	</footer>
+
+	<div id="preloader">
+		<div id="loader"></div>
+	</div>
+
+	<!-- Java Script
+   ================================================== -->
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
 </body>
+
 </html>
