@@ -32,7 +32,6 @@ var slotData = Array.from(dataName);
 // 單人 slot
 // ====================
 var $slotResult = $('#slotResult'),
-    $endText = $('#endText'),
     random_index,
     listLength = 100;
 
@@ -45,7 +44,6 @@ function singleAppendItem() {
 singleAppendItem();
 
 function makeSlotList(list) {
-    
     if (list.length < listLength) {
         var index = _.random(slotData.length - 1);
         if (list.length === 1) {
@@ -60,7 +58,6 @@ function makeSlotList(list) {
         list.push('<li class="item" index=' + _.random(slotData.length - 1) + '><div class="name">' + slotData[index].name + '</div><div class="dept">' + slotData[index].dept + '</div></li>');
         return makeSlotList(list);
         
-       
     } else {
         // * slot list is complete
         // * clear search field
@@ -81,12 +78,13 @@ $('#slot_single').jSlots({
     easing : 'easeOutCirc', 
     endNum: 2, // * spins backwards through the list. endNum 1 ends on the same value we started on
     onStart : function(){
-        
         $('.single .empty').hide();
-        $('#btnSingleGo').hide();
         soundSlot.play();
+        $('.ctrls').hide();
     },
     onEnd: function (finalElement) {
+        
+        $('.ctrls').show();
 
         soundSlot.stop();
         soundSlotEnd.play();
@@ -108,13 +106,15 @@ $('#slot_single').jSlots({
         $(this.spinner).hide();
     
         $('#endText').addClass('animate__animated animate__infinite animate__pulse');
-        $('#endText').click(function () { 
+
+        $('#endText.animate__animated').click(function () { 
             soundWin2.fade(.6, 0, 1000);
             soundClick.play();
             $('#endText').removeClass('animate__animated animate__infinite animate__pulse');
-            $('#btnSingleGo').show();
             $slotResult.html('<div class="empty"></div>');
-            
+            setTimeout(() => {
+                $('#btnSingleGo').show().removeClass('disabled');
+            }, 300);
         });
 
         // * delete selected object from array
@@ -124,6 +124,8 @@ $('#slot_single').jSlots({
 
 $('#btnSingleGo').on('click', function(e){
     e.preventDefault();
+    $(this).addClass('disabled').hide();
+
     soundClick.play();
 
     // * before spinning, build out list to spin through and insert into the DOM
@@ -148,8 +150,8 @@ var $slotResult_multi_1 = $('#slotResult_multi_1'),
     random_index_m3,
     random_index_m4,
     random_index_m5,
-    listLength_multi = 35,
-    multiSlot_opt_time = 1000,
+    listLength_multi = 60,
+    multiSlot_opt_time = 100,//1000,
     multiSlot_opt_loops = 1,
     multiSlot_opt_easing = 'easeOutCirc';
 
@@ -175,8 +177,10 @@ var groupedData = [];
 
 // 產生data list
 function makeSlotList_m1(list) {
+
     if (list.length < listLength_multi) {
         var index = _.random(groupedData[0].length - 1);
+
         if (list.length === 1) {
             random_index_m1 = index;
         }
@@ -287,9 +291,10 @@ $('#slot_multi_1').jSlots({
         
         // * delete selected object from array
         groupedData[0].splice(random_index_m1, 1);
+
         // * 從slotData 裡刪除五組結果
-        var sameIndex = groupedData[0][random_index_m1].id;
-        delSlotDataSame(sameIndex);
+        // var sameIndex = groupedData[0][random_index_m1].id;
+        // delSlotDataSame(sameIndex);
     }
 });
 
@@ -320,9 +325,8 @@ $('#slot_multi_2').jSlots({
         groupedData[1].splice(random_index_m2, 1);
 
         // * 從slotData 裡刪除五組結果
-        var sameIndex = groupedData[1][random_index_m1].id;
-        delSlotDataSame(sameIndex);
-        //slotData.splice(random_index_m2, 1);
+        // var sameIndex = groupedData[1][random_index_m2].id;
+        // delSlotDataSame(sameIndex);
 
     }
 });
@@ -354,9 +358,9 @@ $('#slot_multi_3').jSlots({
         groupedData[2].splice(random_index_m3, 1);
 
         // * 從slotData 裡刪除五組結果
-        var sameIndex = groupedData[2][random_index_m1].id;
-        delSlotDataSame(sameIndex);
-        //slotData.splice(random_index_m3, 1);
+        // var sameIndex = groupedData[2][random_index_m3].id;
+        // delSlotDataSame(sameIndex);
+ 
     }
 });
 
@@ -387,9 +391,8 @@ $('#slot_multi_4').jSlots({
         groupedData[3].splice(random_index_m4, 1);
 
         // * 從slotData 裡刪除五組結果
-        var sameIndex = groupedData[3][random_index_m1].id;
-        delSlotDataSame(sameIndex);
-        //slotData.splice(random_index_m4, 1);
+        // var sameIndex = groupedData[3][random_index_m4].id;
+        // delSlotDataSame(sameIndex);
     }
 });
 
@@ -407,8 +410,10 @@ $('#slot_multi_5').jSlots({
     onStart : function(){
         $('.multi .empty').hide();
         $('#btnMultiGo').hide();
+        $('.ctrls').hide();
     },
     onEnd: function (finalElement) {
+        $('.ctrls').show();
 
         soundSlot.stop();
         soundSlotEnd.play();
@@ -432,26 +437,37 @@ $('#slot_multi_5').jSlots({
         groupedData[4].splice(random_index_m5, 1);
 
         // * 從slotData 裡刪除五組結果
-        var sameIndex = groupedData[4][random_index_m1].id;
-        delSlotDataSame(sameIndex);
-        //slotData.splice(random_index_m5, 1);
+        // var sameIndex = groupedData[4][random_index_m5].id;
+        // delSlotDataSame(sameIndex);
 
         // show endtext and button
-        $endTextMulti.addClass('animate__animated animate__infinite animate__pulse');
-        $endTextMulti.click(function () { 
+        $('#endTextMulti').addClass('animate__animated animate__infinite animate__pulse');
+        $('#endTextMulti.animate__animated').click(function () { 
+            
             soundWin2.fade(.6, 0, 1000);
             soundClick.play();
+
             $endTextMulti.removeClass('animate__animated animate__infinite animate__pulse');
             $('.multi .slot-result').html('<div class="empty"></div>');
-            $('#btnMultiGo').show();
+            setTimeout(() => {
+                $('#btnMultiGo').show().removeClass('disabled');
+            }, 300);
+
         });
+
+        // 將分組抽完的部分重新產生slotData array
+        if(groupedData.length > 0){
+            slotData.length = 0;
+            slotData = slotData.concat(groupedData[0],groupedData[1],groupedData[2],groupedData[3],groupedData[4]);
+        }
     }
 });
 
 $('#btnMultiGo').on('click', function(e){
     e.preventDefault();
-    groupedData = group(slotData, listLength_multi - 10);
-
+    $(this).addClass('disabled');
+    var subGroupLength = Math.floor(slotData.length / 5);
+    groupedData = group(slotData, subGroupLength);
     soundClick.play();
 
     // * before spinning, build out list to spin through and insert into the DOM
@@ -468,10 +484,7 @@ $('#btnMultiGo').on('click', function(e){
     makeSlotList_m3(resultList_3);
     makeSlotList_m4(resultList_4);
     makeSlotList_m5(resultList_5);
-    // setTimeout(() => makeSlotList_m2(resultList_2), 150);
-    // setTimeout(() => makeSlotList_m3(resultList_3), 300);
-    // setTimeout(() => makeSlotList_m4(resultList_4), 450);
-    // setTimeout(() => makeSlotList_m5(resultList_5), 600);
+
 });
 
 // =======================
@@ -480,7 +493,7 @@ $('#btnMultiGo').on('click', function(e){
 $('#btnReset').click(function (e) {
     e.preventDefault();
     soundClick.play();
-    slotData = [];
+    slotData.length = 0; // 清空slotdata array
     slotData = Array.from(dataName);
     $('.slot').html('');
     $('.slot-result').html('<div class="empty"></div>');

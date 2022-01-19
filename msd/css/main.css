@@ -172,13 +172,15 @@ body {
 }
 
 .slot-arena {
+  width: 1920px;
+  height: 1080px;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
-  left: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   top: 100%;
   bottom: 0;
-  right: 0;
+  z-index: 12;
 }
 
 .slot-arena.is-show {
@@ -304,10 +306,12 @@ body {
   opacity: 0;
   -webkit-transition: opacity .3s ease-in-out;
   transition: opacity .3s ease-in-out;
+  pointer-events: none;
 }
 
 .endtext.animate__animated {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .single {
@@ -341,6 +345,11 @@ body {
 .single .slot .item {
   height: 326px;
   padding-top: 20px;
+}
+
+.single .empty {
+  -webkit-transform: translateY(12px);
+          transform: translateY(12px);
 }
 
 .arena-single .btn-go {
@@ -396,7 +405,6 @@ body {
 }
 
 .multi .slot-result {
-  padding-top: 20px;
   height: 186px;
 }
 
@@ -405,7 +413,6 @@ body {
 }
 
 .multi .slot .item {
-  padding-top: 20px;
   height: 186px;
 }
 
@@ -424,6 +431,10 @@ body {
   width: 1310px;
   height: 210px;
   margin-left: -655px;
+}
+
+.btn-go.disabled {
+  pointer-events: none !important;
 }
 
 .ctrls {
