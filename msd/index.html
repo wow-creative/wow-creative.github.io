@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>MSD Party</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <section class="section">
+        <div class="logo"></div>
+        <div class="bg-item desk"></div>
+        <div class="bg-item chair"></div>
+        <div class="bg-item title"></div>
+        <div class="bg-item flower fl"></div>
+        <div class="bg-item flower fr"></div>
+        <div class="bg-item board-single"></div>
+        <div class="bg-item board-multi"></div>
+        <!-- 單人 -->
+        <div class="slot-arena arena-single is-show" id="arenaSingle">
+            <div class="single" id="single">
+                <div class="slot-wrap">
+                    <div class="slot-result" id="slotResult"><div class="empty"></div></div>
+                    <ul class="slot slot-single" id="slot_single"></ul>
+                </div>
+                <button class="btn-go" id="btnSingleGo"><span>GO</span></button>
+                <div class="endtext" id="endText"></div>
+            </div>
+        </div>
+        <!-- / 單人 -->
+        <!-- 多人 -->      
+        <div class="slot-arena arena-multi" id="arenaMulti">
+            <div class="multi multi-1">
+                <div class="slot-wrap">
+                    <div class="slot-result" id="slotResult_multi_1"><div class="empty"></div></div>
+                    <ul class="slot slot-multi" id="slot_multi_1"></ul>
+                </div>
+            </div>
+            <div class="multi multi-2">
+                <div class="slot-wrap">
+                    <div class="slot-result" id="slotResult_multi_2"><div class="empty"></div></div>
+                    <ul class="slot slot-multi" id="slot_multi_2"></ul>
+                </div>
+            </div>
+            <div class="multi multi-3">
+                <div class="slot-wrap">
+                    <div class="slot-result" id="slotResult_multi_3"><div class="empty"></div></div>
+                    <ul class="slot slot-multi" id="slot_multi_3"></ul>
+                </div>
+            </div>
+            <div class="multi multi-4">
+                <div class="slot-wrap">
+                    <div class="slot-result" id="slotResult_multi_4"><div class="empty"></div></div>
+                    <ul class="slot slot-multi" id="slot_multi_4"></ul>
+                </div>
+            </div>
+            <div class="multi multi-5">
+                <div class="slot-wrap">
+                    <div class="slot-result" id="slotResult_multi_5"><div class="empty"></div></div>
+                    <ul class="slot slot-multi" id="slot_multi_5"></ul>
+                </div>
+            </div>
+            <button class="btn-go" id="btnMultiGo"><span>GO</span></button>
+            <div class="endtext" id="endTextMulti"></div>
+        </div>
+        <!-- / 多人 -->
+        <div class="ctrls">
+            <div class="col col-left">
+                <a href="#" class="btn" title="重置" id="btnReset">重置</a>
+            </div>
+            <div class="col col-right">
+                <a href="#" class="btn btn-arena-toggle active" title="二獎/頭獎" id="btnSingleShow">二獎/頭獎</a>
+                <a href="#" class="btn btn-arena-toggle" title="四獎/三獎" id="btnMultiShow">四獎/三獎</a>
+                <a href="#" class="btn" title="全螢幕" id="btnFullScreen">全螢幕</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.2/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="js/jquery.jSlots.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
