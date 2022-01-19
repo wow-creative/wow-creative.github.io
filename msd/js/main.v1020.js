@@ -151,7 +151,7 @@ var $slotResult_multi_1 = $('#slotResult_multi_1'),
     random_index_m4,
     random_index_m5,
     listLength_multi = 60,
-    multiSlot_opt_time = 100,//1000,
+    multiSlot_opt_time = 1000,
     multiSlot_opt_loops = 1,
     multiSlot_opt_easing = 'easeOutCirc';
 
