@@ -258,5 +258,6 @@ dataName = [
     {id:"257",name:"Chang Jenny", dept:"(RA)"},
     {id:"258",name:"Chueh Kevin", dept:"(GMSA)"},
     {id:"259",name:"Chang Frances", dept:"(QA)"},
-    {id:"260",name:"Kuo Karen", dept:"(Market Research)"}
+    {id:"260",name:"Kuo Karen", dept:"(Market Research)"},
+    {id:"261",name:"Chien Ernesto", dept:"(GMAP)"}
 ];
