@@ -73,7 +73,7 @@ $('#slot_single').jSlots({
     number: 1,
     spinner: '.jSlots-wrapper',
     spinEvent: 'spin',
-    time: 400,
+    time: 400,//400,
     loops: 1,
     easing : 'easeOutCirc', 
     endNum: 2, // * spins backwards through the list. endNum 1 ends on the same value we started on
@@ -151,7 +151,7 @@ var $slotResult_multi_1 = $('#slotResult_multi_1'),
     random_index_m4,
     random_index_m5,
     listLength_multi = 60,
-    multiSlot_opt_time = 1000,
+    multiSlot_opt_time = 1000,//1000,
     multiSlot_opt_loops = 1,
     multiSlot_opt_easing = 'easeOutCirc';
 
@@ -525,7 +525,7 @@ $('#btnSingleShow').click(function (e) {
     $('.section').removeClass('is-multi');
     $endTextMulti.removeClass('animate__animated animate__infinite animate__pulse');
     $('.multi .slot-result').html('<div class="empty"></div>');
-    $('#btnMultiGo').show();
+    $('#btnMultiGo').show().removeClass('disabled');
     soundClick.play();
 });
 
@@ -537,7 +537,7 @@ $('#btnMultiShow').click(function (e) {
     $('#btnSingleShow').removeClass('active');
     $('.section').addClass('is-multi');
     $('#endText').removeClass('animate__animated animate__infinite animate__pulse');
-    $('#btnSingleGo').show();
+    $('#btnSingleGo').show().removeClass('disabled');
     $slotResult.html('<div class="empty"></div>');
     soundClick.play();
 });
