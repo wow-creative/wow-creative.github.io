@@ -1,0 +1,179 @@
+			/WariChuOrphanAmount 2
+									/WariChuJustification 7
+									/TCYUpDownAdjustment 0
+									/TCYLeftRightAdjustment 0
+									/LeftAki -1.0
+									/RightAki -1.0
+									/JiDori 0
+									/NoBreak false
+									/FillColor
+									<<
+										/StreamTag /SimplePaint
+										/Color
+										<<
+											/Type 1
+											/Values [ 1.0 0.0 0.0 0.0 ]
+										>>
+									>>
+									/StrokeColor
+									<<
+										/StreamTag /SimplePaint
+										/Color
+										<<
+											/Type 1
+											/Values [ 1.0 0.0 0.0 0.0 ]
+										>>
+									>>
+									/FillFlag true
+									/StrokeFlag false
+									/FillFirst true
+									/FillOverPrint false
+									/StrokeOverPrint false
+									/LineCap 0
+									/LineJoin 0
+									/LineWidth 1.0
+									/MiterLimit 4.0
+									/LineDashOffset 0.0
+									/LineDashArray [ ]
+									/Type1EncodingNames [ ]
+								>>
+							>>
+							/Parent 0
+						>>
+					>>
+					/Length 11
+				>>
+				]
+			>>
+			/StyleRun
+			<<
+				/RunArray [
+				<<
+					/RunData
+					<<
+						/StyleSheet
+						<<
+							/Name (þÿ)
+							/Parent 0
+							/Features
+							<<
+								/Font 2
+								/FontSize 24.0
+								/FauxBold false
+								/FauxItalic false
+								/AutoLeading false
+								/Leading 24.0
+								/HorizontalScale 1.0
+								/VerticalScale 1.0
+								/Tracking 0
+								/BaselineShift 0.0
+								/CharacterRotation 0.0
+								/AutoKern 1
+								/FontCaps 0
+								/FontBaseline 0
+								/FontOTPosition 0
+								/StrikethroughPosition 0
+								/UnderlinePosition 0
+								/UnderlineOffset 0.0
+								/Ligatures true
+								/DiscretionaryLigatures false
+								/ContextualLigatures false
+								/AlternateLigatures false
+								/OldStyle false
+								/Fractions false
+								/Ordinals false
+								/Swash false
+								/Titling false
+								/ConnectionForms false
+								/StylisticAlternates false
+								/Ornaments false
+								/FigureStyle 0
+								/ProportionalMetrics false
+								/Kana false
+								/Italics false
+								/Ruby false
+								/BaselineDirection 2
+								/Tsume 0.0
+								/StyleRunAlignment 2
+								/Language 0
+								/JapaneseAlternateFeature 0
+								/EnableWariChu false
+								/WariChuLineCount 2
+								/WariChuLineGap 0
+								/WariChuSubLineAmount
+								<<
+									/WariChuSubLineScale 0.5
+								>>
+								/WariChuWidowAmount 2
+								/WariChuOrphanAmount 2
+								/WariChuJustification 7
+								/TCYUpDownAdjustment 0
+								/TCYLeftRightAdjustment 0
+								/LeftAki -1.0
+								/RightAki -1.0
+								/JiDori 0
+								/NoBreak false
+								/FillColor
+								<<
+									/StreamTag /SimplePaint
+									/Color
+									<<
+										/Type 1
+										/Values [ 1.0 1.0 1.0 1.0 ]
+									>>
+								>>
+								/StrokeColor
+								<<
+									/StreamTag /SimplePaint
+									/Color
+									<<
+										/Type 1
+										/Values [ 1.0 1.0 0.70587 0.0 ]
+									>>
+								>>
+								/Blend
+								<<
+									/StreamTag /SimpleBlender
+								>>
+								/FillFlag true
+								/StrokeFlag false
+								/FillFirst false
+								/FillOverPrint false
+								/StrokeOverPrint false
+								/LineCap 0
+								/LineJoin 0
+								/LineWidth 1.0
+								/MiterLimit 4.0
+								/LineDashOffset 0.0
+								/LineDashArray [ ]
+								/Type1EncodingNames [ ]
+							>>
+						>>
+					>>
+					/Length 11
+				>>
+				]
+			>>
+			/KernRun
+			<<
+				/RunArray [
+				<<
+					/RunData
+					<<
+					>>
+					/Length 11
+				>>
+				]
+			>>
+			/AlternateGlyphRun
+			<<
+				/RunArray [
+				<<
+					/RunData
+					<<
+					>>
+					/Length 11
+				>>
+				]
+			>>
+			/StoryShee

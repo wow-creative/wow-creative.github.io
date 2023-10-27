@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GSK</title>
+        <link rel="shortcut icon" type="image/png" href="favicon.png">
+        <link rel="stylesheet" href="styles/animate.min.css">
+        <link rel="stylesheet" href="styles/ui.css?version=20180114.1">
+    </head>
+    <body>
+        <div class="main">
+            <div id="particle-canvas"></div>
+            <canvas id="canvas" width="120" height="1024"></canvas>
+            <div class="logo"><img src="styles/logo.png"></div>
+            <div class="title"><img src="styles/title.png"></div>
+            <!-- Slot -->
+            <div class="slot-wrap spin-two-three horizontal" id="slot">
+                <div class="wheel">
+                    <ul class="slices">
+                        <li class="slice" data-id="0">? ? ?</li>
+                        <!-- <li class="slice" data-id="1">許雅雯</li> -->
+                        <li class="slice" data-id="2">廖怡倫</li>
+                        <li class="slice" data-id="3">林姿妙</li>
+                        <li class="slice" data-id="4">江劭倫</li>
+                        <li class="slice" data-id="5">李心蕙</li>
+                        <li class="slice" data-id="6">陳怡惠</li>
+                        <!-- <li class="slice" data-id="7">施玟甄</li> -->
+                        <!-- <li class="slice" data-id="8">張適恆</li> -->
+                        <li class="slice" data-id="9">羅佳怡</li>
+                        <li class="slice" data-id="10">秦美玲</li>
+                        <li class="slice" data-id="11">蔡佳宏</li>
+                        <li class="slice" data-id="12">吳靜雯</li>
+                        <li class="slice" data-id="13">李瓊芬</li>
+                        <li class="slice" data-id="14">黃偉晴</li>
+                        <li class="slice" data-id="15">余上昱</li>
+                        <!-- <li class="slice" data-id="16">莊富雯</li> -->
+                        <li class="slice" data-id="17">黃國旭</li>
+                        <li class="slice" data-id="18">陳信男</li>
+                        <li class="slice" data-id="19">章新瑞</li>
+                        <li class="slice" data-id="20">劉修誌</li>
+                        <li class="slice" data-id="21">馬惠蘭</li>
+                        <li class="slice" data-id="22">湯仁智</li>
+                        <li class="slice" data-id="23">楊佩淇</li>
+                        <li class="slice" data-id="24">方美雪</li>
+                        <li class="slice" data-id="25">林民杉</li>
+                        <li class="slice" data-id="26">林柏樺</li>
+                        <li class="slice" data-id="27">林建勳</li>
+                        <li class="slice" data-id="28">王亞屏</li>
+                        <li class="slice" data-id="29">李衍嵩</li>
+                        <li class="slice" data-id="30">簡永順</li>
+                        <li class="slice" data-id="31">黃珍萬</li>
+                        <li class="slice" data-id="32">張春娥</li>
+                        <li class="slice" data-id="33">蕭鈞旭</li>
+                        <li class="slice" data-id="34">蘇瑞雲</li>
+                        <!-- <li class="slice" data-id="35">楊萬政</li> -->
+                        <li class="slice" data-id="36">陳英愷</li>
+                        <li class="slice" data-id="37">馬家慶</li>
+                        <li class="slice" data-id="38">方昭貴</li>
+                        <li class="slice" data-id="39">黃治程</li>
+                        <li class="slice" data-id="40">范巧雲</li>
+                        <li class="slice" data-id="41">王紀昀</li>
+                        <!-- <li class="slice" data-id="42">邱俊傑</li> -->
+                        <li class="slice" data-id="43">謝忠江</li>
+                        <li class="slice" data-id="44">王翊華</li>
+                        <li class="slice" data-id="45">張懷軍</li>
+                        <li class="slice" data-id="46">吳涵韻</li>
+                        <li class="slice" data-id="47">翁秀香</li>
+                        <li class="slice" data-id="48">林芯伃</li>
+                        <li class="slice" data-id="49">鄭志平</li>
+                        <li class="slice" data-id="50">陳聖涵</li>
+                        <li class="slice" data-id="51">許人王</li>
+                        <li class="slice" data-id="52">宋俊霖</li>
+                        <li class="slice" data-id="53">何歡</li>
+                        <li class="slice" data-id="54">謝依芸</li>
+                        <li class="slice" data-id="55">范綱緒</li>
+                        <li class="slice" data-id="56">彭康禹</li>
+                        <li class="slice" data-id="57">郭瑜涵</li>
+                        <!-- <li class="slice" data-id="58">李國禎</li> -->
+                        <li class="slice" data-id="59">趙立凱</li>
+                        <li class="slice" data-id="60">周汨</li>
+                        <li class="slice" data-id="61">何明原</li>
+                        <li class="slice" data-id="62">簡嘉貞</li>
+                        <li class="slice" data-id="63">廖莎麗</li>
+                        <li class="slice" data-id="64">藍聖傑</li>
+                        <!-- <li class="slice" data-id="65">朱評鳳</li> -->
+                        <li class="slice" data-id="66">王曉筠</li>
+                        <li class="slice" data-id="67">姜欣怡</li>
+                        <li class="slice" data-id="68">曾文忠</li>
+                        <li class="slice" data-id="69">孟素珍</li>
+                        <li class="slice" data-id="70">藍雪玲</li>
+                        <li class="slice" data-id="71">游宗儒</li>
+                        <li class="slice" data-id="72">田淑媛</li>
+                        <li class="slice" data-id="73">張惟翔</li>
+                        <li class="slice" data-id="74">林彥廷</li>
+                        <li class="slice" data-id="75">侯亞葳</li>
+                        <li class="slice" data-id="76">唐郁評</li>
+                        <li class="slice" data-id="77">黃祺哲</li>
+                        <li class="slice" data-id="78">江依錦</li>
+                        <li class="slice" data-id="79">吳瑋強</li>
+                        <li class="slice" data-id="80">張采婷</li>
+                        <li class="slice" data-id="81">張瑞嘉</li>
+                        <li class="slice" data-id="82">謝昕</li>
+                        <li class="slice" data-id="83">張銘</li>
+                        <li class="slice" data-id="84">黃久玲</li>
+                        <!-- <li class="slice" data-id="85">陳佩蓉</li> -->
+                        <li class="slice" data-id="86">陳柏錦</li>
+                        <li class="slice" data-id="87">王郁琇</li>
+                        <li class="slice" data-id="88">謝適隆</li>
+                        <li class="slice" data-id="89">陳思婷</li>
+                        <li class="slice" data-id="90">魏黛娟</li>
+                        <li class="slice" data-id="91">鍾彥右</li>
+                        <li class="slice" data-id="92">林逸竹</li>
+                        <li class="slice" data-id="93">王毅軒</li>
+                        <li class="slice" data-id="94">洪國峰</li>
+                        <li class="slice" data-id="95">黃常榮</li>
+                        <li class="slice" data-id="96">李佳螢</li>
+                        <li class="slice" data-id="97">王志誠</li>
+                        <li class="slice" data-id="98">鍾馥謙</li>
+                        <li class="slice" data-id="99">李皓昀</li>
+                        <li class="slice" data-id="100">李翔筠</li>
+                        <!-- <li class="slice" data-id="101">朱奕儒</li> -->
+                        <li class="slice" data-id="102">簡立</li>
+                        <li class="slice" data-id="103">徐浩軒</li>
+                        <li class="slice" data-id="104">邱蜜鳳</li>
+                        <li class="slice" data-id="105">林微文</li>
+                        <li class="slice" data-id="106">鍾雨彤</li>
+                        <li class="slice" data-id="107">鄭德瑞</li>
+                        <li class="slice" data-id="108">黃文駒</li>
+                        <!-- <li class="slice" data-id="109">蘇益生</li> -->
+                        <li class="slice" data-id="110">陳思旻</li>
+                        <li class="slice" data-id="111">劉沛璇</li>
+                        <li class="slice" data-id="112">吳盛源</li>
+                        <li class="slice" data-id="113">林翰擎</li>
+                        <li class="slice" data-id="114">許慧玲</li>
+                        <!-- <li class="slice" data-id="115">郭力瑋</li> -->
+                        <li class="slice" data-id="116">范龍雲</li>
+                        <li class="slice" data-id="117">黃琮智</li>
+                        <li class="slice" data-id="118">黃淨瑄</li>
+                        <li class="slice" data-id="119">黃孟傑</li>
+                        <!-- <li class="slice" data-id="120">巫潔瑩</li> -->
+                        <li class="slice" data-id="121">許益強</li>
+                        <li class="slice" data-id="122">陳松華</li>
+                        <li class="slice" data-id="123">黃雅貞</li>
+                        <li class="slice" data-id="124">吳俊鋒</li>
+                        <li class="slice" data-id="125">黃郁絜</li>
+                        <li class="slice" data-id="126">劉科志</li>
+                        <li class="slice" data-id="127">陳孟慧</li>
+                        <li class="slice" data-id="128">張婷婷</li>
+                        <!-- <li class="slice" data-id="129">何偉俐</li> -->
+                        <li class="slice" data-id="130">凌心慈</li>
+                        <li class="slice" data-id="131">蔡佳怡</li>
+                        <li class="slice" data-id="132">賴建達</li>
+                        <li class="slice" data-id="133">許晉豪</li>
+                        <li class="slice" data-id="134">聞信</li>
+                        <li class="slice" data-id="135">林冠廷</li>
+                        <!-- <li class="slice" data-id="136">劉雨亭</li> -->
+                        <!-- <li class="slice" data-id="137">李卓軒</li> -->
+                        <li class="slice" data-id="138">陳炫綸</li>
+                        <li class="slice" data-id="139">楊慧儒</li>
+                        <!-- <li class="slice" data-id="140">趙淑敏</li> -->
+                        <li class="slice" data-id="141">陳宗琨</li>
+                        <li class="slice" data-id="142">田開瑋</li>
+                        <li class="slice" data-id="143">廖淑美</li>
+                        <li class="slice" data-id="144">林韋岑</li>
+                        <li class="slice" data-id="145">卓琬玲</li>
+                        <li class="slice" data-id="146">吳宜娟</li>
+                        <!-- <li class="slice" data-id="147">王千佳</li> -->
+                        <li class="slice" data-id="148">江書慧</li>
+                        <li class="slice" data-id="149">蘇浩然</li>
+                        <li class="slice" data-id="150">饒慧芬</li>
+                        <li class="slice" data-id="151">邱暄雅</li>
+                        <li class="slice" data-id="152">何冠霆</li>
+                        <li class="slice" data-id="153">朱琳</li>
+                        <li class="slice" data-id="154">黃麗穎</li>
+                        <li class="slice" data-id="155">簡彤凌</li>
+                        <li class="slice" data-id="156">李則輝</li>
+                        <li class="slice" data-id="157">謝睿瑜</li>
+                        <li class="slice" data-id="158">賴郁婷</li>
+                        <li class="slice" data-id="159">文偉立</li>
+                        <li class="slice" data-id="160">許瓊元</li>
+                        <li class="slice" data-id="161">黃崇仁</li>
+                        <li class="slice" data-id="162">黃金蓮</li>
+                        <li class="slice" data-id="163">高俊玉</li>
+                        <li class="slice" data-id="164">林良信</li>
+                        <li class="slice" data-id="165">陳彥全</li>
+                        <li class="slice" data-id="166">施奕仲</li>
+                        <li class="slice" data-id="167">吳帆</li>
+                        <li class="slice" data-id="168">那睿安</li>
+                        <li class="slice" data-id="169">沈里達</li>
+                        <li class="slice" data-id="170">羅文琪</li>
+                        <li class="slice" data-id="171">白真瑋</li>
+                        <li class="slice" data-id="172">黃婉卿</li>
+                        <li class="slice" data-id="173">吳欣真</li>
+                        <li class="slice" data-id="174">翁瑞薰</li>
+                        <li class="slice" data-id="175">楊惠真</li>
+                        <li class="slice" data-id="176">蔡佩如</li>
+                        <li class="slice" data-id="177">潘思翰</li>
+                        <li class="slice" data-id="178">劉燕梅</li>
+                        <li class="slice" data-id="179">黃更佳</li>
+                        <li class="slice" data-id="180">陳文芳</li>
+                        <!-- <li class="slice" data-id="181">彭俊翔</li> -->
+                        <li class="slice" data-id="182">李惠君</li>
+                        <li class="slice" data-id="183">沈家年</li>
+                        <li class="slice" data-id="184">劉鴻儀</li>
+                        <li class="slice" data-id="185">賴麗秋</li>
+                        <li class="slice" data-id="186">張平珍</li>
+                        <li class="slice" data-id="187">劉美珊</li>
+                        <li class="slice" data-id="188">林應宏</li>
+                        <li class="slice" data-id="189">李佩容</li>
+                        <li class="slice" data-id="190">林致寬</li>
+                        <!-- <li class="slice" data-id="191">張代暄</li> -->
+                        <li class="slice" data-id="192">楊淑帆</li>
+                        <li class="slice" data-id="193">謝宛儒</li>
+                        <!-- <li class="slice" data-id="194">侯宜君</li> -->
+                        <li class="slice" data-id="195">高秀寶</li>
+                        <li class="slice" data-id="196">林律友</li>
+                        <li class="slice" data-id="197">陳凱文</li>
+                        <li class="slice" data-id="198">顏君玲</li>
+                        <li class="slice" data-id="199">劉家琳</li>
+                        <li class="slice" data-id="200">張富文</li>
+                    </ul>
+                </div>
+                <div class="scanner"></div>
+            </div>
+            <!-- / Slot -->
+            <button type="button" class="btn-start spin-two-three-spin" id="btnStart">GO!</button>
+            <div class="celebrate animated" id="endText"></div>
+        </div>
+
+    </div>
+    <div class="overlay"></div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/howler.min.js"></script>
+    <script src="js/CSSPlugin.min.js"></script>
+    <script src="js/EasePack.min.js"></script>
+    <script src="js/TweenLite.min.js"></script>
+    <script src="js/polyfills.js"></script>
+    <script src="js/spin-two-three.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
