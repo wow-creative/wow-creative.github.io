@@ -1,0 +1,442 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+          user-select: none;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none;
+}
+
+body,
+html {
+  font-optical-sizing: auto;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Noto Sans TC", "PingFang TC", Roboto, "Segoe UI", SegoeUI, Helvetica, Arial;
+  background-size: 100% auto;
+  overflow: hidden;
+  height: 100vw;
+}
+
+body {
+  background-color: #EA1C23;
+}
+
+.loading {
+  background-color: #A6121E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  /* HTML: <div class="loader"></div> */
+}
+.loading .loader {
+  --w:10ch;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  line-height: 1.2em;
+  letter-spacing: var(--w);
+  width: var(--w);
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fff;
+  animation: l17 2s infinite;
+}
+.loading .loader:before {
+  content: "Loading...";
+}
+@keyframes l17 {
+  0% {
+    text-shadow: calc(0 * var(--w)) -1.2em #fff, calc(-1 * var(--w)) -1.2em #fff, calc(-2 * var(--w)) -1.2em #fff, calc(-3 * var(--w)) -1.2em #fff, calc(-4 * var(--w)) -1.2em #fff, calc(-5 * var(--w)) -1.2em #fff, calc(-6 * var(--w)) -1.2em #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  4% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) -1.2em #fff, calc(-2 * var(--w)) -1.2em #fff, calc(-3 * var(--w)) -1.2em #fff, calc(-4 * var(--w)) -1.2em #fff, calc(-5 * var(--w)) -1.2em #fff, calc(-6 * var(--w)) -1.2em #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  8% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) -1.2em #fff, calc(-3 * var(--w)) -1.2em #fff, calc(-4 * var(--w)) -1.2em #fff, calc(-5 * var(--w)) -1.2em #fff, calc(-6 * var(--w)) -1.2em #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  12% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) -1.2em #fff, calc(-4 * var(--w)) -1.2em #fff, calc(-5 * var(--w)) -1.2em #fff, calc(-6 * var(--w)) -1.2em #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  16% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) -1.2em #fff, calc(-5 * var(--w)) -1.2em #fff, calc(-6 * var(--w)) -1.2em #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  20% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) -1.2em #fff, calc(-6 * var(--w)) -1.2em #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  24% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) -1.2em #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  28% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 0 #fff, calc(-7 * var(--w)) -1.2em #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  32% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 0 #fff, calc(-7 * var(--w)) 0 #fff, calc(-8 * var(--w)) -1.2em #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  36% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 0 #fff, calc(-7 * var(--w)) 0 #fff, calc(-8 * var(--w)) 0 #fff, calc(-9 * var(--w)) -1.2em #fff;
+  }
+  40%, 60% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 0 #fff, calc(-7 * var(--w)) 0 #fff, calc(-8 * var(--w)) 0 #fff, calc(-9 * var(--w)) 0 #fff;
+  }
+  64% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 0 #fff, calc(-7 * var(--w)) 0 #fff, calc(-8 * var(--w)) 0 #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  68% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 0 #fff, calc(-7 * var(--w)) 0 #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  72% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 0 #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  76% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 0 #fff, calc(-6 * var(--w)) 1.2em #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  80% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 0 #fff, calc(-5 * var(--w)) 1.2em #fff, calc(-6 * var(--w)) 1.2em #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  84% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 0 #fff, calc(-4 * var(--w)) 1.2em #fff, calc(-5 * var(--w)) 1.2em #fff, calc(-6 * var(--w)) 1.2em #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  88% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 0 #fff, calc(-3 * var(--w)) 1.2em #fff, calc(-4 * var(--w)) 1.2em #fff, calc(-5 * var(--w)) 1.2em #fff, calc(-6 * var(--w)) 1.2em #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  92% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 0 #fff, calc(-2 * var(--w)) 1.2em #fff, calc(-3 * var(--w)) 1.2em #fff, calc(-4 * var(--w)) 1.2em #fff, calc(-5 * var(--w)) 1.2em #fff, calc(-6 * var(--w)) 1.2em #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  96% {
+    text-shadow: calc(0 * var(--w)) 0 #fff, calc(-1 * var(--w)) 1.2em #fff, calc(-2 * var(--w)) 1.2em #fff, calc(-3 * var(--w)) 1.2em #fff, calc(-4 * var(--w)) 1.2em #fff, calc(-5 * var(--w)) 1.2em #fff, calc(-6 * var(--w)) 1.2em #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+  100% {
+    text-shadow: calc(0 * var(--w)) 1.2em #fff, calc(-1 * var(--w)) 1.2em #fff, calc(-2 * var(--w)) 1.2em #fff, calc(-3 * var(--w)) 1.2em #fff, calc(-4 * var(--w)) 1.2em #fff, calc(-5 * var(--w)) 1.2em #fff, calc(-6 * var(--w)) 1.2em #fff, calc(-7 * var(--w)) 1.2em #fff, calc(-8 * var(--w)) 1.2em #fff, calc(-9 * var(--w)) 1.2em #fff;
+  }
+}
+
+.section {
+  background: url(../images/bg.jpg) no-repeat center center;
+  background-size: 100% 100%;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.jSlots-wrapper {
+  overflow: hidden;
+  display: block;
+}
+
+.bg-item {
+  position: absolute;
+  z-index: 0;
+}
+.bg-item.title {
+  background: url(../images/title.png) no-repeat center top;
+  background-size: contain;
+  top: 100px;
+  left: 50%;
+  margin-left: -504px;
+  width: 1000px;
+  height: 260px;
+  z-index: 99;
+}
+.bg-item.board-single {
+  background: url(../images/board_single.png) no-repeat center top;
+  background-size: contain;
+  width: 847px;
+  height: 401px;
+  top: 360px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.bg-item.building {
+  left: -1px;
+  bottom: -1px;
+  width: 35.5208333333vw;
+  height: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.slot-arena {
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  bottom: 0;
+  z-index: 12;
+}
+.slot-arena.is-show {
+  top: 0;
+}
+
+.slot-wrap {
+  color: #fff;
+  font-family: "Yeseva One", serif;
+  font-weight: 400;
+  font-size: 288px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-indent: 0.1em;
+  text-align: center;
+  text-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  position: relative;
+}
+.slot-wrap .name {
+  margin-bottom: 0.25em;
+  text-align: center;
+}
+.slot-wrap .dept {
+  font-size: 0.7em;
+  text-align: center;
+  font-weight: 500;
+}
+
+.slot {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.slot .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.slot-result {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  text-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+}
+
+.empty {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.btn-go {
+  background: url(../images/btn_go.png) no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+  outline: none;
+  border-width: 0;
+  position: absolute;
+  left: 50%;
+  z-index: 30;
+  width: 187px;
+  height: 187px;
+  margin-left: -93px;
+  transition: all 0.025s ease-in-out;
+}
+.btn-go span {
+  position: absolute;
+  top: 100%;
+}
+.btn-go:active {
+  transform: scale(0.9);
+}
+
+.endtext {
+  background: url(../images/cl.png) no-repeat center top;
+  background-size: contain;
+  position: absolute;
+  width: 964px;
+  height: 160px;
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+.endtext.animate__animated {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.single {
+  width: 100%;
+}
+.single .slot-wrap {
+  width: 770px;
+  height: 298px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 392px;
+}
+.single .jSlots-wrapper {
+  height: 298px;
+}
+.single .slot-result {
+  height: 298px;
+}
+.single .slot {
+  height: 298px;
+}
+.single .slot .item {
+  height: 298px;
+}
+
+.arena-single .btn-go {
+  top: 660px;
+}
+.arena-single .endtext {
+  top: 720px;
+  width: 1140px;
+  height: 208px;
+  margin-left: -570px;
+}
+
+.btn-go.disabled {
+  pointer-events: none !important;
+}
+
+.ctrls {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+.ctrls .col {
+  position: absolute;
+  bottom: 20px;
+}
+.ctrls .col-left {
+  left: 20px;
+}
+.ctrls .col-right {
+  right: 20px;
+}
+.ctrls .btn {
+  background-color: transparent;
+  background: #482307;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #fff;
+  column-gap: 1rem;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 6px 0 0 0;
+  outline: 2px solid transparent;
+  padding: 10px 12px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
+}
+.ctrls .btn:active {
+  background-color: #f3f4f6;
+  box-shadow: -1px 2px 5px rgba(81, 41, 10, 0.15), 0px 1px 1px rgba(81, 41, 10, 0.15);
+  color: #482307;
+  transform: translateY(0.125rem);
+}
+.ctrls .btn:focus {
+  box-shadow: rgba(72, 35, 7, 0.46) 0 0 0 4px, -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
+}
+
+#replay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+#replay.is-show {
+  display: block;
+  width: 100vw;
+  height: 100vw;
+  z-index: 1000;
+}
+
+.waves-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.waves-wrapper .waves {
+  height: 240px;
+  min-height: 240px;
+  width: 100%;
+}
+.waves-wrapper .parallax > use {
+  animation: move-forever 50s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.waves-wrapper .parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 14s;
+}
+.waves-wrapper .parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 20s;
+}
+.waves-wrapper .parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.waves-wrapper .parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+#fireworks {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+}

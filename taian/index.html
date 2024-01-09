@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰安產物保險-2023尾牙暨榮耀頒獎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/main.min.css">
+</head>
+<body>
+    <div class="loading"><div class="loader"></div></div>
+    <section class="section">
+        <div class="waves-wrapper">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(222,30,37,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(216,29,36,0.7)" />
+                </g>
+            </svg>
+        </div>
+        <div id="fireworks"></div>
+        <img class="bg-item building" src="assets/images/building.png" alt="">
+        <div class="bg-item title"></div>
+        <div class="bg-item board-single"></div>
+
+        <!-- 單人 -->
+        <div class="slot-arena arena-single is-show" id="arenaSingle">
+            <div class="single" id="single">
+                <div class="slot-wrap">
+                    <div class="slot-result" id="slotResult"><div class="empty">???</div></div>
+                    <ul class="slot slot-single" id="slot_single"></ul>
+                </div>
+                <button class="btn-go" id="btnSingleGo"><span>GO</span></button>
+                <div class="endtext" id="endText"></div>
+            </div>
+        </div>
+        <!-- / 單人 -->
+
+        <div class="ctrls">
+            <div class="col col-right">
+                <!-- <a href="#" class="btn" title="重置" id="btnReset">重置</a> -->
+                <a href="#" class="btn" title="全螢幕" id="btnFullScreen">全螢幕</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="replay"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.2/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+    <script src="assets/js/jquery.jSlots.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
