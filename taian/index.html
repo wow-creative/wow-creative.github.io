@@ -13,7 +13,8 @@
 <body>
     <div class="loading"><div class="loader"></div></div>
     <section class="section">
-        <div class="waves-wrapper">
+        <canvas class="stars"></canvas>
+        <!-- <div class="waves-wrapper">
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
                 <defs>
                     <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
@@ -23,29 +24,30 @@
                     <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(216,29,36,0.7)" />
                 </g>
             </svg>
-        </div>
+        </div> -->
         <div id="fireworks"></div>
         <img class="bg-item building" src="assets/images/building.png" alt="">
-        <div class="bg-item title"></div>
-        <div class="bg-item board-single"></div>
-
-        <!-- 單人 -->
-        <div class="slot-arena arena-single is-show" id="arenaSingle">
-            <div class="single" id="single">
-                <div class="slot-wrap">
-                    <div class="slot-result" id="slotResult"><div class="empty">???</div></div>
-                    <ul class="slot slot-single" id="slot_single"></ul>
+        <div class="arena">
+            <img class="bg-item title" src="assets/images/title.png" alt="">
+            <img class="bg-item board-single" src="assets/images/board_single.png" alt="">
+            <!-- 單人 -->
+            <div class="slot-arena arena-single is-show" id="arenaSingle">
+                <div class="single" id="single">
+                    <div class="slot-wrap">
+                        <div class="slot-result" id="slotResult"><div class="empty">???</div></div>
+                        <ul class="slot slot-single" id="slot_single"></ul>
+                    </div>
+                    <button class="btn-go" id="btnSingleGo"><span>GO</span></button>
+                    <div class="endtext" id="endText"></div>
                 </div>
-                <button class="btn-go" id="btnSingleGo"><span>GO</span></button>
-                <div class="endtext" id="endText"></div>
             </div>
+            <!-- / 單人 -->
         </div>
-        <!-- / 單人 -->
 
         <div class="ctrls">
-            <div class="col col-right">
+            <div class="col col-left">
                 <!-- <a href="#" class="btn" title="重置" id="btnReset">重置</a> -->
-                <a href="#" class="btn" title="全螢幕" id="btnFullScreen">全螢幕</a>
+                <a href="#" class="btn btn-icon btn-screen --expand" title="全螢幕" id="btnFullScreen"><i class="icon"></i></a>
             </div>
         </div>
     </section>

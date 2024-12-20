@@ -3,6 +3,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 //===============
+// arena responsive size (需配合css)
+//===============
+// 更新 CSS 變量
+function updateVwVariable() {
+    document.documentElement.style.setProperty('--vw', window.innerWidth / 100);
+    document.documentElement.style.setProperty('--vh', window.innerHeight / 100);
+}
+
+// 初始化和監聽視窗大小變化
+window.addEventListener('resize', updateVwVariable);
+updateVwVariable();
+
+//===============
 // Fireworks
 //===============
 const fwContainer = document.querySelector('#fireworks');
@@ -74,7 +87,7 @@ var soundWin2 = new Howl({
 // 排除號碼
 const exNum = [1, 2, 4, 10, 13, 14, 24, 34, 40, 44];
 // 生成總抽獎數組
-const fullArray = Array.from({ length: 108 }, (_, index) => index + 1);
+const fullArray = Array.from({ length: 109 }, (_, index) => index + 1);
 // 過濾exNum的數字
 //const filteredArray = fullArray.filter(num => !exNum.includes(num));
 // 將數字轉為三位數
@@ -228,10 +241,160 @@ $('#btnFullScreen').click(function (e) {
     //soundClick.play();
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
+        $(this).addClass('--shrink').removeClass('--expand');
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
+        $(this).addClass('--expand').removeClass('--shrink');
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
     }
 });
 
+// =========================
+// stars effect
+// =========================
+const DENSITY = 1;
+const MAX_SIZE = 1.5;
+let TIME = 0;
+const cvs = document.querySelector('.stars');
+
+// Set display size (css pixels).
+cvs.style.width = `${window.innerWidth}px`;
+cvs.style.height = `${window.innerHeight}px`;
+
+// Set actual size in memory (scaled to account for extra pixel density).
+var scale = window.devicePixelRatio || 1; // Change to 1 on retina screens to see blurry canvas.
+console.log(scale);
+cvs.width = window.innerWidth * scale;
+cvs.height = window.innerHeight * scale;
+
+// Normalize coordinate system to use css pixels.
+cvs.getContext('2d').scale(scale, scale);
+
+
+// Stars
+class Star {
+  constructor(x,y,r,canvas) {
+    this.x = x;
+    this.y = y;
+    this.r = r;
+    this.r2 = this.r;
+    this.cvs = canvas;
+    this.ctx = this.cvs.getContext('2d');
+    this.hue = Math.random()*360;
+    this.shine = this.r > (MAX_SIZE*0.8) && Math.random() > .5;
+    this.rand = Math.random()*1000;
+  }
+  
+  draw() {
+    const { ctx, x, y, r } = this;
+    ctx.beginPath();
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, this.r2*4);
+    gradient.addColorStop(0, `hsla(${this.hue},100%,100%,0.25)`);
+    gradient.addColorStop(1, `hsla(${this.hue},100%,100%,0)`);
+    ctx.fillStyle = gradient;
+    ctx.arc(this.x, this.y, this.r2*4, 0, Math.PI*2);
+    ctx.closePath();
+    ctx.fill();
+    
+    if (this.shine) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.transform(1.2,0,0,.2,0,0);
+      let gradient = ctx.createRadialGradient(x/1.2, y/.2, 0, x/1.2, y/.2, this.r2*4);
+      gradient.addColorStop(0, `hsla(${this.hue},100%,100%,0.8)`);
+      gradient.addColorStop(1, `hsla(${this.hue},100%,100%,0)`);
+      ctx.fillStyle = gradient;
+      ctx.arc(this.x/1.2, this.y/.2, this.r2*4, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+      
+      ctx.save();
+      ctx.beginPath();
+      ctx.transform(.2,0,0,1.2,0,0);
+      gradient = ctx.createRadialGradient(x/.2, y/1.2, 0, x/.2, y/1.2, this.r2*4);
+      gradient.addColorStop(0, `hsla(${this.hue},100%,100%,0.8)`);
+      gradient.addColorStop(1, `hsla(${this.hue},100%,100%,0)`);
+      ctx.fillStyle = gradient;
+      ctx.arc(this.x/.2, this.y/1.2, this.r2*4, 0, Math.PI*2);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+    
+    ctx.beginPath();
+    ctx.fillStyle = 'white';
+    ctx.arc(this.x, this.y, this.r2, 0, Math.PI*2);
+    ctx.closePath();
+    ctx.fill();
+  }
+  
+  twinkle() {
+    this.r2 = this.r + (Math.random() * this.r / 4) - this.r / 8;
+  }
+  
+  sparkle() {
+    this.r2 = Math.sin(TIME/(5*Math.PI) + this.rand)*this.r + this.r;
+  }
+  
+  update() {
+    //this.twinkle();
+    this.sparkle();
+    this.draw();
+  }
+}
+
+class Starfield {
+  constructor(amount, canvas) {
+    this.amount = amount;
+    this.cvs = canvas;
+    this.stars = [];
+    
+    for (let i = 0, len = this.amount; i < len; i++) {
+      const elem = new Star(
+        Math.random() * this.cvs.width,
+        Math.random() * this.cvs.height,
+        Math.random() * MAX_SIZE,
+        this.cvs
+      );
+      
+      elem.update();
+      
+      this.stars.push(elem);
+    }
+  }
+  
+  twinkle() {
+    this.stars.forEach(item => item.update());
+  }
+}
+
+let stars;
+
+function resizeCanvas() {
+  const w = window.innerWidth * scale,
+        h = window.innerHeight * scale;
+  cvs.width = w;
+  cvs.height = h;
+  cvs.style.width = `${window.innerWidth}px`;
+  cvs.style.height = `${window.innerHeight}px`;
+  stars = new Starfield(w*h/20000, cvs);
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function animate() {
+  const ctx = cvs.getContext('2d');
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+  stars.twinkle();
+  const gradient = ctx.createLinearGradient(0, 0, 0, cvs.height);
+  gradient.addColorStop(0,'rgba(10,12,25,0)');
+  gradient.addColorStop(1,'rgba(10,12,25,0.5)');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0,0,cvs.width,cvs.height);
+  TIME ++;
+  window.requestAnimationFrame(animate);
+}
+animate();
