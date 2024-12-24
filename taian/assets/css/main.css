@@ -30,13 +30,13 @@ body {
 }
 
 body {
-  background: rgb(109, 23, 34);
-  background: linear-gradient(0deg, rgb(109, 23, 34) 5%, rgb(232, 23, 34) 25%, rgb(218, 99, 140) 46%, rgb(110, 66, 171) 100%);
+  background: #d50b1c;
+  background: linear-gradient(180deg, #d50b1c 0%, #e11e50 25%, #dd3185 50%, #973c9d 75%, #6e42ab 100%);
 }
 
 .loading {
-  background: rgb(109, 23, 34);
-  background: linear-gradient(0deg, rgb(109, 23, 34) 5%, rgb(232, 23, 34) 25%, rgb(218, 99, 140) 46%, rgb(110, 66, 171) 100%);
+  background: #d50b1c;
+  background: linear-gradient(180deg, #d50b1c 0%, #e11e50 25%, #dd3185 50%, #973c9d 75%, #6e42ab 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +46,6 @@ body {
   bottom: 0;
   left: 0;
   z-index: 99999;
-  /* HTML: <div class="loader"></div> */
 }
 .loading .loader {
   --w:10ch;
@@ -131,8 +130,8 @@ body {
 }
 
 .section {
-  background: rgb(109, 23, 34);
-  background: linear-gradient(0deg, rgb(109, 23, 34) 5%, rgb(232, 23, 34) 25%, rgb(218, 99, 140) 46%, rgb(110, 66, 171) 100%);
+  background: #d50b1c;
+  background: linear-gradient(180deg, #d50b1c 0%, #e11e50 25%, #dd3185 50%, #973c9d 75%, #6e42ab 100%);
   display: block;
   width: 100vw;
   height: 100vh;
@@ -437,47 +436,6 @@ body {
   z-index: 1000;
 }
 
-.waves-wrapper {
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  overflow: hidden;
-}
-.waves-wrapper .waves {
-  height: 240px;
-  min-height: 240px;
-  width: 100%;
-}
-.waves-wrapper .parallax > use {
-  animation: move-forever 50s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-}
-.waves-wrapper .parallax > use:nth-child(1) {
-  animation-delay: -2s;
-  animation-duration: 14s;
-}
-.waves-wrapper .parallax > use:nth-child(2) {
-  animation-delay: -3s;
-  animation-duration: 20s;
-}
-.waves-wrapper .parallax > use:nth-child(3) {
-  animation-delay: -4s;
-  animation-duration: 13s;
-}
-.waves-wrapper .parallax > use:nth-child(4) {
-  animation-delay: -5s;
-  animation-duration: 20s;
-}
-
-@keyframes move-forever {
-  0% {
-    transform: translate3d(-90px, 0, 0);
-  }
-  100% {
-    transform: translate3d(85px, 0, 0);
-  }
-}
 #fireworks {
   position: absolute;
   height: 100vh;

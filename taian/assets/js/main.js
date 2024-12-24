@@ -289,7 +289,7 @@ cvs.style.height = `${window.innerHeight}px`;
 
 // Set actual size in memory (scaled to account for extra pixel density).
 var scale = window.devicePixelRatio || 1; // Change to 1 on retina screens to see blurry canvas.
-console.log(scale);
+
 cvs.width = window.innerWidth * scale;
 cvs.height = window.innerHeight * scale;
 
@@ -398,28 +398,28 @@ class Starfield {
 let stars;
 
 function resizeCanvas() {
-  const w = window.innerWidth * scale,
+    const w = window.innerWidth * scale,
         h = window.innerHeight * scale;
-  cvs.width = w;
-  cvs.height = h;
-  cvs.style.width = `${window.innerWidth}px`;
-  cvs.style.height = `${window.innerHeight}px`;
-  stars = new Starfield(w*h/20000, cvs);
+    cvs.width = w;
+    cvs.height = h;
+    cvs.style.width = `${window.innerWidth}px`;
+    cvs.style.height = `${window.innerHeight}px`;
+    stars = new Starfield(w*h/20000, cvs);
 }
 
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
 function animate() {
-  const ctx = cvs.getContext('2d');
-  ctx.clearRect(0,0,cvs.width,cvs.height);
-  stars.twinkle();
-  const gradient = ctx.createLinearGradient(0, 0, 0, cvs.height);
-  gradient.addColorStop(0,'rgba(10,12,25,0)');
-  gradient.addColorStop(1,'rgba(10,12,25,0.5)');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0,0,cvs.width,cvs.height);
-  TIME ++;
-  window.requestAnimationFrame(animate);
+    const ctx = cvs.getContext('2d');
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    stars.twinkle();
+    const gradient = ctx.createLinearGradient(0, 0, 0, cvs.height);
+    // gradient.addColorStop(0,'rgba(10,12,25,0)');
+    // gradient.addColorStop(1,'rgba(10,12,25,0.5)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,cvs.width,cvs.height);
+    TIME ++;
+    window.requestAnimationFrame(animate);
 }
 animate();
