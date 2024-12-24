@@ -30,11 +30,13 @@ body {
 }
 
 body {
-  background-color: #EA1C23;
+  background: rgb(109, 23, 34);
+  background: linear-gradient(0deg, rgb(109, 23, 34) 5%, rgb(232, 23, 34) 25%, rgb(218, 99, 140) 46%, rgb(110, 66, 171) 100%);
 }
 
 .loading {
-  background-color: #A6121E;
+  background: rgb(109, 23, 34);
+  background: linear-gradient(0deg, rgb(109, 23, 34) 5%, rgb(232, 23, 34) 25%, rgb(218, 99, 140) 46%, rgb(110, 66, 171) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,7 +141,7 @@ body {
 
 .arena {
   width: 1040px;
-  height: 760px;
+  height: 620px;
   position: absolute;
   top: 40%;
   left: 50%;
@@ -174,15 +176,15 @@ body {
 .bg-item.title {
   top: 0;
   left: 50%;
-  margin-left: -504px;
-  width: 1000px;
+  margin-left: -450px;
+  width: 900px;
   height: auto;
   z-index: 99;
 }
 .bg-item.board-single {
   width: 847px;
   height: auto;
-  top: 280px;
+  top: 170px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -323,7 +325,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 312px;
+  top: 202px;
 }
 .single .jSlots-wrapper {
   height: 298px;
@@ -339,13 +341,13 @@ body {
 }
 
 .arena-single .btn-go {
-  top: 580px;
+  top: 470px;
 }
 .arena-single .endtext {
-  top: 610px;
-  width: 1140px;
-  height: 208px;
-  margin-left: -570px;
+  top: 500px;
+  width: 840px;
+  height: 140px;
+  margin-left: -420px;
 }
 
 .btn-go.disabled {

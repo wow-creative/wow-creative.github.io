@@ -20,6 +20,44 @@ updateVwVariable();
 //===============
 const fwContainer = document.querySelector('#fireworks');
 const fw = new Fireworks.default(fwContainer,{
+    autoresize   :true,
+    lineStyle    :'round',
+    flickering   :50,
+    trace        :3,
+    traceSpeed   :25,
+    intensity    :6,
+    explosion    :5,
+    gravity      :1.5,
+    opacity      :0.5,
+    particles    :50,
+    friction     :0.95,
+    acceleration :1,
+    rocketsPoint: {
+        min: 70,//20
+        max: 100 //100
+    },
+    lineWidth: {
+        explosion: {
+            min: 0,
+            max: 2
+        },
+        trace: {
+            min: 0,
+            max: 2
+        }
+    },
+    decay: {
+        min: 0.015,
+        max: 0.03
+    },
+    delay: {
+        min: 10,
+        max: 50
+    },
+    brightness : {
+        min: 50,
+        max: 80
+    },
     sound:{
         enabled: true,
         files: [
@@ -28,24 +66,10 @@ const fw = new Fireworks.default(fwContainer,{
             'assets/audio/explosion2.mp3',
         ],
         volume: {
-            min: 20,
+            min: 0,
             max: 50
         }
-    },
-    rocketsPoint: {
-        min: 20,
-        max: 100
-    },
-    lineWidth: {
-        explosion: {
-            min: 1,
-            max: 5
-        },
-        trace: {
-            min: 1,
-            max: 2
-        }
-    },
+    }
 });
 function fireworksGo(){
     fw.start();
@@ -165,16 +189,17 @@ $('#slot_single').jSlots({
             soundWin2.fade(0, .6, 0);
         }, 600);
         
+        
+
         // * set result
         //$slotResult.html('<div class="name">' + slotData[random_index].name + '</div><div class="dept">' + slotData[random_index].dept + '</div>');
         $slotResult.html( slotData[random_index]);
 
         // * hide spinner
         $(this.spinner).hide();
-        
-        fireworksGo();
 
-        $('#endText').addClass('animate__animated animate__infinite animate__pulse');
+        $('#endText').addClass('animate__animated animate__pulse animate__repeat-3');
+        fireworksGo();
         
         // $('#endText.animate__animated').click(function () { 
         //     soundWin2.fade(.6, 0, 1000);
@@ -191,7 +216,7 @@ $('#slot_single').jSlots({
             soundWin2.fade(.6, 0, 1000);
             soundClick.play();
             $('#replay').removeClass('is-show');
-            $('#endText').removeClass('animate__animated animate__infinite animate__pulse');
+            $('#endText').removeClass('animate__animated animate__pulse animate__repeat-3');
             $slotResult.html('<div class="empty">???</div>');
             setTimeout(() => {
                 fw.stop();
