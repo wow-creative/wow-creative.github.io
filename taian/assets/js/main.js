@@ -1,9 +1,13 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-   $('.loading').fadeOut(300);
+    const loadingEl = document.querySelector('.loading');
+    if (loadingEl) {
+        // 使用 CSS 或 GSAP 進行簡單淡出
+        gsap.to(loadingEl, { duration: 0.3, opacity: 0, onComplete: () => loadingEl.style.display = 'none' });
+    }
 });
 
 //===============
-// arena responsive size (需配合css)
+// 場地響應式大小 (需配合css)
 //===============
 // 更新 CSS 變量
 function updateVwVariable() {
@@ -15,70 +19,45 @@ function updateVwVariable() {
 window.addEventListener('resize', updateVwVariable);
 updateVwVariable();
 
-//===============
-// Fireworks
-//===============
-const fwContainer = document.querySelector('#fireworks');
-const fw = new Fireworks.default(fwContainer,{
-    autoresize   :true,
-    lineStyle    :'round',
-    flickering   :50,
-    trace        :3,
-    traceSpeed   :25,
-    intensity    :6,
-    explosion    :5,
-    gravity      :1.5,
-    opacity      :0.5,
-    particles    :50,
-    friction     :0.95,
-    acceleration :1,
-    rocketsPoint: {
-        min: 70,//20
-        max: 100 //100
-    },
-    lineWidth: {
-        explosion: {
-            min: 0,
-            max: 2
-        },
-        trace: {
-            min: 0,
-            max: 2
-        }
-    },
-    decay: {
-        min: 0.015,
-        max: 0.03
-    },
-    delay: {
-        min: 10,
-        max: 50
-    },
-    brightness : {
-        min: 50,
-        max: 80
-    },
-    sound:{
-        enabled: true,
-        files: [
-            'assets/audio/explosion0.mp3',
-            'assets/audio/explosion1.mp3',
-            'assets/audio/explosion2.mp3',
-        ],
-        volume: {
-            min: 0,
-            max: 50
-        }
+// 星星特效初始化
+function initStars() {
+    const starsContainer = document.getElementById('starsContainer');
+    if (!starsContainer) return;
+
+    const starCount = 30; // 不用太多，約 30 顆
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+
+        // 隨機位置
+        const x = Math.random() * 100; // vw
+        const y = Math.random() * 100; // vh (% of container)
+
+        // 隨機大小 (增加尺寸以顯示星芒形狀)
+        const size = Math.random() * 12 + 4; // 4px - 12px
+
+        // 隨機動畫延遲與持續時間
+        const duration = Math.random() * 3 + 2; // 2s - 5s
+        const delay = Math.random() * 5;
+        const opacity = Math.random() * 0.5 + 0.5; // 0.5 - 1.0 peak opacity
+
+        star.style.left = `${x}%`;
+        star.style.top = `${y}%`;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.animationDuration = `${duration}s`;
+        star.style.animationDelay = `${delay}s`;
+        star.style.setProperty('--opacity', opacity);
+
+        starsContainer.appendChild(star);
     }
-});
-function fireworksGo(){
-    fw.start();
-    setTimeout(() => {
-        fw.stop();
-    }, 8000);
 }
 
-// Audio
+// 啟動星星
+initStars();
+
+// 音效
 // ==========================================
 var soundClick = new Howl({
     src: ['assets/audio/button_click.mp3'],
@@ -105,321 +84,390 @@ var soundWin2 = new Howl({
 });
 
 
-//================================
-// var slotData = Array.from(dataName);
 
+// =========================
+// 歷史紀錄功能
+// =========================
+const historyKey = 'luckyDrawHistory';
+const btnHistory = document.getElementById('btnHistory');
+const historyModal = document.getElementById('historyModal');
+const btnCloseHistory = document.getElementById('btnCloseHistory');
+const historyList = document.getElementById('historyList');
+const btnClearHistory = document.getElementById('btnClearHistory');
+
+function loadHistoryData() {
+    const data = localStorage.getItem(historyKey);
+    return data ? JSON.parse(data) : [];
+}
+
+function saveHistory(num) {
+    const history = loadHistoryData();
+    // 將新結果加入到歷史紀錄的開頭
+    history.unshift({
+        num: num,
+        timestamp: new Date().toISOString() // 儲存 ISO 格式，讀取時再格式化（如果需要）
+    });
+    localStorage.setItem(historyKey, JSON.stringify(history));
+}
+
+//================================
+// 全部號碼總組數
+const totalSlotLength = 115;
 // 排除號碼
 const exNum = [1, 2, 4, 10, 13, 14, 24, 34, 40, 44];
 // 生成總抽獎數組
-const fullArray = Array.from({ length: 109 }, (_, index) => index + 1);
+const fullArray = Array.from({ length: totalSlotLength }, (_, index) => index + 1);
 // 過濾exNum的數字
-//const filteredArray = fullArray.filter(num => !exNum.includes(num));
-// 將數字轉為三位數
-//const slotData = filteredArray.map(num => num.toString().padStart(3, '0'));
-const slotData = fullArray.filter(num => !exNum.includes(num));
+let slotData = [];
 
-// ====================
-// 單人 slot
-// ====================
-var $slotResult = $('#slotResult'),
-    random_index,
-    listLength = 80;
-
-
-function singleAppendItem() {
-    for (i = 0; i < listLength; i++) {
-        $('#slot_single').append('<li class="item">');
-    }
+function initSlotData() {
+    const history = loadHistoryData();
+    const historyNums = history.map(item => item.num);
+    slotData = fullArray.filter(num => !exNum.includes(num) && !historyNums.includes(num));
+    console.log('抽獎資料初始化完成。剩餘：', slotData.length);
 }
-singleAppendItem();
 
-function makeSlotList(list) {
-    if (list.length < listLength) {
-        var index = _.random(slotData.length - 1);
-        if (list.length === 1) {
-            /*
-                This index will be second item in the list, which is our winning number
-                Save this for future reference
-                Instead of saving it, we could get the index attribute from the list item we end on
-            */
-            random_index = index;
+// 初始載入
+initSlotData();
+
+// ====================
+// 單人老虎機
+// ====================
+// DOM 元素
+const slotResultEl = document.getElementById('slotResult');
+const slotSingleList = document.getElementById('slot_single');
+const btnSingleGo = document.getElementById('btnSingleGo');
+const endTextEl = document.getElementById('endText');
+const replayEl = document.getElementById('replay');
+const ctrlsEl = document.querySelector('.ctrls');
+
+// 我們需要實作捲動效果。
+// 策略：
+// 1. 在 'slotSingleList' 中填入長長的項目列表。
+// 2. 最後一個項目（或特定項目）將是贏家。
+// 3. 動畫化列表的 'scrollTop' 或 translateY。
+
+const ITEM_HEIGHT = 150; // 預估值，請根據 CSS 調整！！
+// 假設 .item 高度。需要檢查 CSS 或計算樣式。
+// 理想情況下如果可能的話讀取計算後的樣式，但現在先假設一個固定高度或進行測量。
+
+function getSampleItemHeight() {
+    // 輔助函式：如果列表已填充，則測量項目高度
+    const item = slotSingleList.querySelector('.item');
+    if (item) return item.offsetHeight;
+    return 100; // fallback
+}
+
+// GSAP 老虎機實作
+function runSlotAnimation() {
+    // 1. 選出贏家
+    if (slotData.length === 0) {
+        alert("已抽出所有號碼了哦！");
+        btnSingleGo.classList.remove('disabled');
+        btnSingleGo.style.display = '';
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * slotData.length);
+    const winnerNum = slotData[randomIndex];
+
+    // 2. 建立動畫列表
+    // 我們需要足夠的項目來捲動幾秒鐘。
+    // 讓我們從可用集合中建立一個隨機號碼列表，並以贏家結束。
+    const scrollItemsCount = 30; // 要捲動的項目數量
+    let itemsHtml = '';
+
+    // 將當前顯示的結果作為第一個項目，確保如果我們正在顯示某些內容時能無縫開始
+    // (可選，簡化為僅隨機流)
+
+    for (let i = 0; i < scrollItemsCount; i++) {
+        // 隨機「填充」號碼
+        const r = slotData[Math.floor(Math.random() * slotData.length)];
+        itemsHtml += `<li class="item">${r}</li>`;
+    }
+    // 在最後加入贏家
+    itemsHtml += `<li class="item" id="winner-item">${winnerNum}</li>`;
+    // 在後面添加一些贏家或通用項目的複本，以避免稍微過衝時出現空白（安全措施）
+    // 實際上，GSAP scrollTo 可以針對特定元素。
+
+    slotSingleList.innerHTML = itemsHtml;
+
+    // 顯示列表容器
+    slotSingleList.style.display = 'block';
+
+    // 既然項目已在 DOM 中，測量高度
+    const itemHeight = slotSingleList.querySelector('.item').offsetHeight;
+    // 重置位置
+    gsap.set(slotSingleList, { y: 0 });
+
+    // 3. 開始狀態
+    const emptyMsg = document.querySelector('.single .empty');
+    if (emptyMsg) emptyMsg.style.display = 'none';
+
+    if (ctrlsEl) ctrlsEl.style.display = 'none';
+    soundSlot.play();
+
+    // 4. 動畫
+    // 計算目標 Y 值。我們想要向上捲動，所以列表向下移動？
+    // 通常老虎機將條帶向下移動（項目向下），或向上（項目向上）。
+    // 原始的 jSlots 是「向上」旋轉（號碼向上移動）。
+    // 所以我們將 Y 平移為負值。
+    const totalHeight = (scrollItemsCount + 1) * itemHeight;
+    // 目標是顯示贏家。贏家位於索引 'scrollItemsCount'。
+    // 贏家位置 = scrollItemsCount * itemHeight。
+    // 我們希望贏家置中或置頂。根據 jSlots 通常的情況，目前假設頂部對齊。
+    // 如果包裹容器的高度為 1 個項目，我們捲動到 -WinnerPosition。
+
+    gsap.to(slotSingleList, {
+        y: - (scrollItemsCount * itemHeight),
+        duration: 3, // Duration of spin
+        ease: "back.out(0.5)", // Ease out with a little overshoot for "lock" effect
+        onComplete: () => {
+            // 動畫結束
+            onSpinEnd(winnerNum, randomIndex);
         }
-
-        //list.push('<li class="item" index=' + _.random(slotData.length - 1) + '><div class="name">' + slotData[index].name + '</div><div class="dept">' + slotData[index].dept + '</div></li>');
-        list.push('<li class="item" index=' + _.random(slotData.length - 1) + '>' + slotData[index] + '</li>');
-        return makeSlotList(list);
-        
-    } else {
-        // * slot list is complete
-        // * clear search field
-        $slotResult.html('');
-        // * attach list, show jslots, run animation
-        $('#slot_single').html(list.join('')).parent().show().trigger('spin');
-        return list;
-    }
-    
+    });
 }
 
-$('#slot_single').jSlots({
-    number: 1,
-    spinner: '.jSlots-wrapper',
-    spinEvent: 'spin',
-    time: 200,
-    loops: 1,
-    easing : 'easeOutCirc', 
-    endNum: 2, // * spins backwards through the list. endNum 1 ends on the same value we started on
-    onStart : function(){
-        $('.single .empty').hide();
-        soundSlot.play();
-        $('.ctrls').hide();
-    },
-    onEnd: function (finalElement) {
-        
-        $('.ctrls').show();
+function onSpinEnd(winnerNum, removeIndex) {
+    if (ctrlsEl) ctrlsEl.style.display = '';
 
-        soundSlot.stop();
-        soundSlotEnd.play();
-        
-        setTimeout(function() {
-            soundWin1.play();
-        }, 300);
+    soundSlot.stop();
+    soundSlotEnd.play();
 
-        setTimeout(function() {
-            soundWin2.play();
-            soundWin2.fade(0, .6, 0);
-        }, 600);
-        
-        
+    setTimeout(function () {
+        soundWin1.play();
+    }, 300);
 
-        // * set result
-        //$slotResult.html('<div class="name">' + slotData[random_index].name + '</div><div class="dept">' + slotData[random_index].dept + '</div>');
-        $slotResult.html( slotData[random_index]);
+    setTimeout(function () {
+        soundWin2.play();
+        soundWin2.fade(0, .6, 0);
+    }, 600);
 
-        // * hide spinner
-        $(this.spinner).hide();
+    // 更新結果顯示
+    slotResultEl.innerHTML = winnerNum;
+    slotSingleList.style.display = 'none';
 
-        $('#endText').addClass('animate__animated animate__pulse animate__repeat-3');
-        fireworksGo();
-        
-        // $('#endText.animate__animated').click(function () { 
-        //     soundWin2.fade(.6, 0, 1000);
-        //     soundClick.play();
-        //     $('#endText').removeClass('animate__animated animate__infinite animate__pulse');
-        //     $slotResult.html('<div class="empty">?</div>');
-        //     setTimeout(() => {
-        //         $('#btnSingleGo').show().removeClass('disabled');
-        //     }, 300);
-        // });
+    // 儲存至歷史紀錄
+    saveHistory(winnerNum);
 
-        $('#replay').addClass('is-show');
-        $('#replay').click(function () {
-            soundWin2.fade(.6, 0, 1000);
-            soundClick.play();
-            $('#replay').removeClass('is-show');
-            $('#endText').removeClass('animate__animated animate__pulse animate__repeat-3');
-            $slotResult.html('<div class="empty">???</div>');
-            setTimeout(() => {
-                fw.stop();
-                $('#btnSingleGo').show().removeClass('disabled');
-            }, 300);
-         });
+    // 觸發特效
+    endTextEl.classList.add('animate__animated', 'animate__pulse', 'animate__repeat-3');
+    // fireworksGo();
 
-        // * delete selected object from array
-        slotData.splice(random_index, 1);
-    }
-});
+    // 顯示重播
+    replayEl.classList.add('is-show');
 
-$('#btnSingleGo').on('click', function(e){
+    // 設定重播點擊 (一次性)
+    const onReplayClick = function () {
+        soundWin2.fade(.6, 0, 1000);
+        soundClick.play();
+
+        replayEl.classList.remove('is-show');
+        endTextEl.classList.remove('animate__animated', 'animate__pulse', 'animate__repeat-3');
+
+        // 動畫：當前號碼向上移出，??? 向上移入。
+        // 1. 取得當前內容
+        const currentContent = slotResultEl.innerHTML;
+
+        // 2. 設定重置動畫列表
+        slotSingleList.innerHTML = `
+            <li class="item">${currentContent}</li>
+            <li class="item">???</li>
+        `;
+        slotSingleList.style.display = 'block';
+        gsap.set(slotSingleList, { y: 0 });
+
+        // 3. 測量高度 (現在可見)
+        const itemHeight = slotSingleList.querySelector('.item') ? slotSingleList.querySelector('.item').offsetHeight : 298;
+
+        // 4. 隱藏結果 (避免重複顯示)
+        slotResultEl.innerHTML = '';
+
+        // 5. 動畫
+        gsap.to(slotSingleList, {
+            y: -itemHeight,
+            duration: 0.5,
+            ease: "power2.inOut",
+            onComplete: () => {
+                // 還原狀態
+                slotResultEl.innerHTML = '<div class="empty">???</div>';
+                slotSingleList.style.display = 'none';
+
+                setTimeout(() => {
+                    // fw.stop();
+                    btnSingleGo.style.display = '';
+                    btnSingleGo.classList.remove('disabled');
+                    gsap.fromTo(btnSingleGo,
+                        { scale: 0 },
+                        { scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)" }
+                    );
+                }, 10);
+            }
+        });
+
+        // 移除監聽器以防止在邏輯循環時多重綁定（雖然這裡我們只增加了一個）
+        replayEl.removeEventListener('click', onReplayClick);
+    };
+    replayEl.addEventListener('click', onReplayClick);
+
+    // 從資料中移除贏家
+    slotData.splice(removeIndex, 1);
+}
+
+
+// GO 按鈕的事件監聽器
+btnSingleGo.addEventListener('click', function (e) {
     e.preventDefault();
-    $(this).addClass('disabled').hide();
-    fw.stop();
+    this.classList.add('disabled');
+    this.style.display = 'none';
+    // fw.stop();
     soundClick.play();
 
-    // * before spinning, build out list to spin through and insert into the DOM
-    // * start with current value
-    var resultList = ['<li class="item">' + $slotResult.html() + '</li>'];
-
-    // * call recursive list builder that won't spin slots until it's finished
-    makeSlotList(resultList);
+    runSlotAnimation();
 });
+
+
+// =======================
+// 自動測試按鈕
+// =======================
+const btnAutoTest = document.getElementById('btnAutoTest');
+if (btnAutoTest) {
+    btnAutoTest.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (slotData.length === 0) {
+            alert('已無剩餘號碼！');
+            return;
+        }
+
+        if (confirm(`確定要自動抽出剩餘的 ${slotData.length} 組號碼嗎？`)) {
+            // 持續抽獎直到清空
+            while (slotData.length > 0) {
+                const randomIndex = Math.floor(Math.random() * slotData.length);
+                const winnerNum = slotData[randomIndex];
+
+                // 直接存入歷史紀錄
+                saveHistory(winnerNum);
+
+                // 從池中移除（如同正常抽獎）
+                slotData.splice(randomIndex, 1);
+            }
+
+            // 更新 UI/通知
+            renderHistory();
+            alert('測試抽獎完成！已抽出所有號碼。');
+
+            // 應確認是否需要更新任何顯示或僅留空
+            // 也許顯示最後抽出的號碼？或者僅重置？
+            // 目前，我們只要確保「GO」按鈕在下次點擊時知道已空。
+        }
+    });
+}
 
 
 // =======================
 // 控制按鈕
 // =======================
-// $('#btnReset').click(function (e) {
-//     e.preventDefault();
-//     soundClick.play();
-//     slotData.length = 0; // 清空slotdata array
-//     slotData = Array.from(dataName);
-//     $('.slot').html('');
-//     $('.slot-result').html('<div class="empty"></div>');
-//     $('.endtext').removeClass('animate__animated animate__infinite animate__pulse');
-//     $('.btn-go').show();
-//     singleAppendItem();
-//     multiAppendItem();
-//     alert('抽獎資料已重置')
-// });
-
-$('#btnFullScreen').click(function (e) {
-    e.preventDefault();
-    //soundClick.play();
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-        $(this).addClass('--shrink').removeClass('--expand');
-    } else {
-        $(this).addClass('--expand').removeClass('--shrink');
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
+const btnFullScreen = document.getElementById('btnFullScreen');
+if (btnFullScreen) {
+    btnFullScreen.addEventListener('click', function (e) {
+        e.preventDefault();
+        //soundClick.play();
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            this.classList.add('--shrink');
+            this.classList.remove('--expand');
+        } else {
+            this.classList.add('--expand');
+            this.classList.remove('--shrink');
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
         }
+    });
+}
+
+
+// =========================
+// 歷史紀錄功能
+// =========================
+// 已移至頂部：historyKey, loadHistoryData, saveHistory
+
+function clearHistory() {
+    if (confirm('確定要清除所有紀錄嗎？')) {
+        localStorage.removeItem(historyKey);
+        renderHistory();
+        initSlotData(); // 重置抽獎池
+    }
+}
+
+function deleteHistoryItem(index) {
+    const history = loadHistoryData();
+    const item = history[index];
+    if (confirm(`確定要刪除 ${item.num} 號的紀錄嗎？`)) {
+        history.splice(index, 1);
+        localStorage.setItem(historyKey, JSON.stringify(history));
+        renderHistory();
+        initSlotData(); // 更新抽獎池以包含刪除的項目
+    }
+}
+
+function renderHistory() {
+    const history = loadHistoryData();
+    historyList.innerHTML = '';
+
+    // 更新標題計數
+    const titleEl = document.getElementById('historyTitle');
+    if (titleEl) {
+        // 根據使用者圖片假設最大值為 100，或者僅顯示計數。
+        // 使用者圖片：(44 / 100)。100 可能是參與者總數或僅是一個限制。
+        // 我將暫時顯示 (計數)，或 (計數 / 總數)，如果有總數的話。
+        // 總插槽數 = 程式碼中的 totalSlotLength (fullArray)。
+        const total = fullArray.length - exNum.length;
+        titleEl.innerText = `抽獎紀錄 ( ${history.length} / ${total} )`;
+    }
+
+    if (history.length === 0) {
+        historyList.innerHTML = '<li class="empty-history">目前沒有抽獎紀錄</li>';
+        return;
+    }
+
+    history.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `${item.num}`;
+        li.title = "點擊以刪除此紀錄";
+        if (index === 0) {
+            li.classList.add('latest');
+        }
+        li.addEventListener('click', () => deleteHistoryItem(index));
+        historyList.appendChild(li);
+    });
+}
+
+if (btnHistory) {
+    btnHistory.addEventListener('click', (e) => {
+        e.preventDefault();
+        renderHistory();
+        historyModal.classList.add('is-open');
+    });
+}
+
+if (btnCloseHistory) {
+    btnCloseHistory.addEventListener('click', () => {
+        historyModal.classList.remove('is-open');
+    });
+}
+
+if (btnClearHistory) {
+    btnClearHistory.addEventListener('click', () => {
+        clearHistory();
+    });
+}
+
+// 點擊外部時關閉模態框
+window.addEventListener('click', (e) => {
+    if (e.target == historyModal) {
+        historyModal.classList.remove('is-open');
     }
 });
-
-// =========================
-// stars effect
-// =========================
-const DENSITY = 1;
-const MAX_SIZE = 1.5;
-let TIME = 0;
-const cvs = document.querySelector('.stars');
-
-// Set display size (css pixels).
-cvs.style.width = `${window.innerWidth}px`;
-cvs.style.height = `${window.innerHeight}px`;
-
-// Set actual size in memory (scaled to account for extra pixel density).
-var scale = window.devicePixelRatio || 1; // Change to 1 on retina screens to see blurry canvas.
-
-cvs.width = window.innerWidth * scale;
-cvs.height = window.innerHeight * scale;
-
-// Normalize coordinate system to use css pixels.
-cvs.getContext('2d').scale(scale, scale);
-
-
-// Stars
-class Star {
-  constructor(x,y,r,canvas) {
-    this.x = x;
-    this.y = y;
-    this.r = r;
-    this.r2 = this.r;
-    this.cvs = canvas;
-    this.ctx = this.cvs.getContext('2d');
-    this.hue = Math.random()*360;
-    this.shine = this.r > (MAX_SIZE*0.8) && Math.random() > .5;
-    this.rand = Math.random()*1000;
-  }
-  
-  draw() {
-    const { ctx, x, y, r } = this;
-    ctx.beginPath();
-    const gradient = ctx.createRadialGradient(x, y, 0, x, y, this.r2*4);
-    gradient.addColorStop(0, `hsla(${this.hue},100%,100%,0.25)`);
-    gradient.addColorStop(1, `hsla(${this.hue},100%,100%,0)`);
-    ctx.fillStyle = gradient;
-    ctx.arc(this.x, this.y, this.r2*4, 0, Math.PI*2);
-    ctx.closePath();
-    ctx.fill();
-    
-    if (this.shine) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.transform(1.2,0,0,.2,0,0);
-      let gradient = ctx.createRadialGradient(x/1.2, y/.2, 0, x/1.2, y/.2, this.r2*4);
-      gradient.addColorStop(0, `hsla(${this.hue},100%,100%,0.8)`);
-      gradient.addColorStop(1, `hsla(${this.hue},100%,100%,0)`);
-      ctx.fillStyle = gradient;
-      ctx.arc(this.x/1.2, this.y/.2, this.r2*4, 0, Math.PI*2);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-      
-      ctx.save();
-      ctx.beginPath();
-      ctx.transform(.2,0,0,1.2,0,0);
-      gradient = ctx.createRadialGradient(x/.2, y/1.2, 0, x/.2, y/1.2, this.r2*4);
-      gradient.addColorStop(0, `hsla(${this.hue},100%,100%,0.8)`);
-      gradient.addColorStop(1, `hsla(${this.hue},100%,100%,0)`);
-      ctx.fillStyle = gradient;
-      ctx.arc(this.x/.2, this.y/1.2, this.r2*4, 0, Math.PI*2);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    }
-    
-    ctx.beginPath();
-    ctx.fillStyle = 'white';
-    ctx.arc(this.x, this.y, this.r2, 0, Math.PI*2);
-    ctx.closePath();
-    ctx.fill();
-  }
-  
-  twinkle() {
-    this.r2 = this.r + (Math.random() * this.r / 4) - this.r / 8;
-  }
-  
-  sparkle() {
-    this.r2 = Math.sin(TIME/(5*Math.PI) + this.rand)*this.r + this.r;
-  }
-  
-  update() {
-    //this.twinkle();
-    this.sparkle();
-    this.draw();
-  }
-}
-
-class Starfield {
-  constructor(amount, canvas) {
-    this.amount = amount;
-    this.cvs = canvas;
-    this.stars = [];
-    
-    for (let i = 0, len = this.amount; i < len; i++) {
-      const elem = new Star(
-        Math.random() * this.cvs.width,
-        Math.random() * this.cvs.height,
-        Math.random() * MAX_SIZE,
-        this.cvs
-      );
-      
-      elem.update();
-      
-      this.stars.push(elem);
-    }
-  }
-  
-  twinkle() {
-    this.stars.forEach(item => item.update());
-  }
-}
-
-let stars;
-
-function resizeCanvas() {
-    const w = window.innerWidth * scale,
-        h = window.innerHeight * scale;
-    cvs.width = w;
-    cvs.height = h;
-    cvs.style.width = `${window.innerWidth}px`;
-    cvs.style.height = `${window.innerHeight}px`;
-    stars = new Starfield(w*h/20000, cvs);
-}
-
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-function animate() {
-    const ctx = cvs.getContext('2d');
-    ctx.clearRect(0,0,cvs.width,cvs.height);
-    stars.twinkle();
-    const gradient = ctx.createLinearGradient(0, 0, 0, cvs.height);
-    // gradient.addColorStop(0,'rgba(10,12,25,0)');
-    // gradient.addColorStop(1,'rgba(10,12,25,0.5)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0,0,cvs.width,cvs.height);
-    TIME ++;
-    window.requestAnimationFrame(animate);
-}
-animate();

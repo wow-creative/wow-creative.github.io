@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泰安產物保險-2024尾牙暨榮耀頒獎</title>
+    <title>泰安產物保險-2025尾牙暨榮耀頒獎</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/main.min.css">
 </head>
+
 <body>
-    <div class="loading"><div class="loader"></div></div>
+    <div class="loading">
+        <div class="loader"></div>
+    </div>
     <section class="section">
-        <canvas class="stars"></canvas>
-        <div id="fireworks"></div>
+        <div class="stars" id="starsContainer"></div>
+        <!-- <div id="fireworks"></div> -->
         <img class="bg-item building" src="assets/images/building.png" alt="">
         <div class="arena">
             <img class="bg-item title" src="assets/images/title.png" alt="">
@@ -23,7 +27,9 @@
             <div class="slot-arena arena-single is-show" id="arenaSingle">
                 <div class="single" id="single">
                     <div class="slot-wrap">
-                        <div class="slot-result" id="slotResult"><div class="empty">???</div></div>
+                        <div class="slot-result" id="slotResult">
+                            <div class="empty">???</div>
+                        </div>
                         <ul class="slot slot-single" id="slot_single"></ul>
                     </div>
                     <button class="btn-go" id="btnSingleGo"><span>GO</span></button>
@@ -32,23 +38,43 @@
             </div>
             <!-- / 單人 -->
         </div>
-
-        <div class="ctrls">
-            <div class="col col-left">
-                <!-- <a href="#" class="btn" title="重置" id="btnReset">重置</a> -->
-                <a href="#" class="btn btn-icon btn-screen --expand" title="全螢幕" id="btnFullScreen"><i class="icon"></i></a>
-            </div>
-        </div>
     </section>
 
     <div id="replay"></div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <div class="ctrls">
+        <div class="col col-right">
+            <a href="#" class="btn btn-icon btn-screen --expand" title="全螢幕" id="btnFullScreen"><i class="icon"></i></a>
+            <a href="#" class="btn btn-icon btn-history" title="抽獎紀錄" id="btnHistory"><i class="icon"></i></a>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="btnCloseHistory">&times;</span>
+            <div class="modal-header">
+                <div class="title-grounp">
+                    <i class="icon-file"></i>
+                    <h2 id="historyTitle">抽獎紀錄 (0)</h2>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button id="btnAutoTest" class="btn-clear">抽出全部號碼</button>
+                    <button id="btnClearHistory" class="btn-clear">清除紀錄</button>
+                </div>
+            </div>
+            <div class="history-list-wrap">
+                <ul id="historyList" class="history-list">
+                    <!-- History items will be injected here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.2/underscore-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
-    <script src="assets/js/jquery.jSlots.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
