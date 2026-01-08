@@ -171,7 +171,7 @@ body {
   display: block;
 }
 .bg-item.title {
-  top: 20px;
+  bottom: 87%;
   left: 50%;
   margin-left: -450px;
   width: 900px;
@@ -181,7 +181,7 @@ body {
 .bg-item.board-single {
   width: 847px;
   height: auto;
-  top: 170px;
+  top: 70px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -189,7 +189,7 @@ body {
 .bg-item.building {
   left: -2.6041666667vw;
   bottom: -1.5625vw;
-  width: 35.4166666667vw;
+  width: 39.5833333333vw;
   height: auto;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -322,7 +322,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 202px;
+  top: 102px;
 }
 .single .jSlots-wrapper {
   height: 298px;
@@ -338,10 +338,10 @@ body {
 }
 
 .arena-single .btn-go {
-  top: 455px;
+  top: 370px;
 }
 .arena-single .endtext {
-  top: 500px;
+  top: 400px;
   width: 840px;
   height: 140px;
   margin-left: -420px;
