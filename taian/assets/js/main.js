@@ -112,7 +112,7 @@ function saveHistory(num) {
 
 //================================
 // 全部號碼總組數
-const totalSlotLength = 115;
+const totalSlotLength = 116;
 // 排除號碼
 const exNum = [1, 2, 4, 10, 13, 14, 24, 34, 40, 44];
 // 生成總抽獎數組
