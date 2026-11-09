@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#081327">
+    <meta name="description" content="泰安尾牙新春球形幸運號碼機">
+    <title>新春球形幸運號碼機</title>
+  <script type="module" crossorigin src="./assets/index-D46Hdki2.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Csgw6LHE.css">
+</head>
+<body>
+    <main class="lottery" data-state="idle" aria-label="新春球形幸運號碼機">
+        <div class="scene">
+            <img class="scene__courtyard" src="./assets/courtyard-Bp8_h67i.webp" alt="" fetchpriority="high">
+            <img class="scene__props" src="./assets/props-DA-ba1lI.webp" alt="">
+            <img class="scene__glass-back" src="./assets/glass-back-VyS8T9_-.webp" alt="">
+            <img class="scene__glass" src="./assets/glass-KHdiuFVG.webp" alt="">
+            <img class="scene__resting" src="./assets/resting-CP1t0e9_.webp" alt="">
+            <canvas class="scene__canvas scene__balls" width="1100" height="619" aria-hidden="true"></canvas>
+            <div class="scene__glass-sheen" aria-hidden="true"></div>
+            <img class="scene__rim" src="./assets/rim-FTBuS09b.webp" alt="">
+            <img class="scene__base" src="./assets/base-BqlwxAT4.webp" alt="">
+            <div class="scene__charge" aria-hidden="true"></div>
+            <canvas class="scene__canvas scene__effects" width="1100" height="619" aria-hidden="true"></canvas>
+            <div class="prize" hidden aria-hidden="true">
+                <div class="prize__sphere">
+                    <div class="prize__halo"></div>
+                    <div class="prize__ball number-ball"><span class="prize__number"></span></div>
+                </div>
+                <img class="prize__ribbon" src="./assets/ribbon-3z_CrytA.webp" alt="" width="2048" height="768">
+            </div>
+            <button class="go" type="button" aria-label="GO，開始抽獎">
+                <img src="./assets/go-DePkYE2N.webp" alt="">
+            </button>
+        </div>
+
+        <div class="toolbar" role="group" aria-label="抽獎工具">
+            <button type="button" id="open-history" aria-haspopup="dialog" aria-label="抽獎紀錄" title="抽獎紀錄" data-icon="clock"></button>
+            <button type="button" id="fullscreen" aria-label="進入全螢幕" title="進入全螢幕" data-icon="arrows-maximize"></button>
+            <button type="button" id="open-settings" aria-haspopup="dialog" aria-label="設定" title="設定" data-icon="settings"></button>
+        </div>
+        <p class="notice" role="status"></p>
+        <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></p>
+    </main>
+
+    <dialog class="panel" id="settings" aria-labelledby="settings-title">
+        <form class="panel__surface" id="settings-form" novalidate>
+            <header class="panel__heading">
+                <h2 id="settings-title"><span data-icon="settings"></span>設定抽獎參數</h2>
+                <button type="button" class="panel__close" aria-label="關閉設定" autofocus data-close data-icon="x"></button>
+            </header>
+            <div class="panel__body panel__fields">
+                <label for="min">抽獎號碼最小數</label>
+                <input id="min" name="min" type="number" step="1" required aria-describedby="settings-error">
+                <label for="max">抽獎號碼最大數</label>
+                <input id="max" name="max" type="number" step="1" required aria-describedby="settings-error">
+                <label for="excluded">排除的數字</label>
+                <input id="excluded" name="excluded" type="text" placeholder="例如：8,13,66" autocomplete="off" aria-describedby="settings-error">
+                <p class="panel__error" id="settings-error" role="alert" hidden></p>
+            </div>
+            <footer class="panel__actions">
+                <button type="button" data-close>取消</button>
+                <button class="panel__primary" type="submit">確認</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <dialog class="panel panel--history" id="history" aria-labelledby="history-title">
+        <section class="panel__surface">
+            <header class="panel__heading">
+                <h2 id="history-title"><span data-icon="clock"></span>抽獎紀錄</h2>
+                <button type="button" class="panel__close" aria-label="關閉抽獎紀錄" data-close data-icon="x" autofocus></button>
+            </header>
+            <div class="panel__body">
+                <p class="panel__summary" id="history-summary"></p>
+                <p id="history-empty">目前還沒有抽獎紀錄。</p>
+                <ol class="history-list" id="history-list" aria-label="依抽出順序排列的號碼"></ol>
+                <button class="panel__more" type="button" id="history-more" hidden>顯示更多號碼</button>
+                <p class="panel__error" id="history-error" role="alert" hidden></p>
+            </div>
+            <footer class="panel__actions">
+                <button class="panel__primary" type="button" id="draw-all">抽出全部號碼</button>
+                <button type="button" id="clear-history">清除紀錄</button>
+            </footer>
+        </section>
+    </dialog>
+
+    <dialog class="panel panel--confirm" id="confirm" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+        <form class="panel__surface" method="dialog">
+            <header class="panel__heading">
+                <h2 id="confirm-title"></h2>
+                <button class="panel__close" type="button" data-close data-icon="x" aria-label="關閉確認視窗"></button>
+            </header>
+            <div class="panel__body">
+                <p id="confirm-message"></p>
+            </div>
+            <footer class="panel__actions">
+                <button value="cancel" autofocus>取消</button>
+                <button class="panel__primary" value="accept">確認</button>
+            </footer>
+        </form>
+    </dialog>
+</body>
+</html>
