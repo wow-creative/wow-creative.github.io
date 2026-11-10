@@ -6,15 +6,28 @@
     <meta name="theme-color" content="#081327">
     <meta name="description" content="泰安尾牙新春球形幸運號碼機">
     <title>新春球形幸運號碼機</title>
-  <script type="module" crossorigin src="./assets/index-D46Hdki2.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Csgw6LHE.css">
+  <script type="module" crossorigin src="./assets/index-h4Be9c6V.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Bf6emvRa.css">
 </head>
 <body>
-    <main class="lottery" data-state="idle" aria-label="新春球形幸運號碼機">
+    <section class="preloader" aria-labelledby="preloader-title">
+        <div class="preloader__content">
+            <div class="preloader__mark" aria-hidden="true"></div>
+            <h1 id="preloader-title">新春球形幸運號碼機</h1>
+            <p class="preloader__status" role="status">正在載入場景與音效…</p>
+            <div class="preloader__meter">
+                <progress value="0" max="100" aria-label="素材載入進度"></progress>
+                <span class="preloader__percent" aria-hidden="true">0%</span>
+            </div>
+            <button class="preloader__retry" type="button" hidden>重新載入</button>
+            <noscript><p>請開啟 JavaScript 後重新載入網頁。</p></noscript>
+        </div>
+    </section>
+    <main class="lottery" data-state="idle" aria-label="新春球形幸運號碼機" hidden>
         <div class="scene">
             <img class="scene__courtyard" src="./assets/courtyard-Bp8_h67i.webp" alt="" fetchpriority="high">
             <img class="scene__props" src="./assets/props-DA-ba1lI.webp" alt="">
-            <img class="scene__glass-back" src="./assets/glass-back-VyS8T9_-.webp" alt="">
+            <div class="scene__glass-back" aria-hidden="true"></div>
             <img class="scene__glass" src="./assets/glass-KHdiuFVG.webp" alt="">
             <img class="scene__resting" src="./assets/resting-CP1t0e9_.webp" alt="">
             <canvas class="scene__canvas scene__balls" width="1100" height="619" aria-hidden="true"></canvas>
@@ -28,10 +41,29 @@
                     <div class="prize__halo"></div>
                     <div class="prize__ball number-ball"><span class="prize__number"></span></div>
                 </div>
-                <img class="prize__ribbon" src="./assets/ribbon-3z_CrytA.webp" alt="" width="2048" height="768">
+                <div class="prize__laurel prize__laurel--left">
+                    <img src="./assets/marquee-laurel-CVDu8yAo.webp" alt="" width="300" height="486">
+                </div>
+                <div class="prize__laurel prize__laurel--right">
+                    <img src="./assets/marquee-laurel-CVDu8yAo.webp" alt="" width="300" height="486">
+                </div>
+                <div class="prize__ribbon">
+                    <div class="prize__tail prize__tail--left">
+                        <img src="./assets/marquee-tail-CNoQ9iaZ.webp" alt="" width="789" height="373">
+                    </div>
+                    <div class="prize__tail prize__tail--right">
+                        <img src="./assets/marquee-tail-CNoQ9iaZ.webp" alt="" width="789" height="373">
+                    </div>
+                    <div class="prize__sign">
+                        <img class="prize__panel" src="./assets/marquee-panel-jd8R1f4p.webp" alt="恭喜中獎" width="1780" height="520">
+                        <img class="prize__message" src="./assets/marquee-text-8uZZ_j8u.webp" alt="" width="890" height="260">
+                        <img class="prize__lights prize__lights--odd" src="./assets/marquee-lights-odd-CfilQpy4.webp" alt="" width="890" height="260">
+                        <img class="prize__lights prize__lights--even" src="./assets/marquee-lights-even-Cf9phEHD.webp" alt="" width="890" height="260">
+                    </div>
+                </div>
             </div>
             <button class="go" type="button" aria-label="GO，開始抽獎">
-                <img src="./assets/go-DePkYE2N.webp" alt="">
+                <img src="./assets/go-CUsLfS5A.webp" alt="">
             </button>
         </div>
 
